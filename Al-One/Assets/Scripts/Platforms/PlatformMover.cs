@@ -19,7 +19,7 @@ public class PlatformMover : MonoBehaviour
         if (MovingTile.position != Locations[LocationIndex].position)
         {
             step = TileSpeed * Time.deltaTime;
-            MovingTile.position = Vector3.MoveTowards(MovingTile.position, Locations[LocationIndex].position, m_Step);
+            MovingTile.position = Vector3.MoveTowards(MovingTile.position, Locations[LocationIndex].position, step);
         }
         else
         {
