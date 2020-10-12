@@ -18,7 +18,6 @@ public class PlatformMover : MonoBehaviour
     public bool PlayOneshot = false; // Added this so we can sequence a bunch of platforms at the same time  and ensure they stay in sync
 
     private float startTime;
-    private float step;
     private int currentLocationIndex = 0;
     private int targetLocationIndex = 0;
     private float journeyLenght;
