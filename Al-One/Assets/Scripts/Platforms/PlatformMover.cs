@@ -4,19 +4,21 @@ using UnityEngine;
 
 public class PlatformMover : MonoBehaviour
 {
-    public Transform MovingTile;
-    public Transform[] Locations;
+    [Header("Objects to assign")]
+    [SerializeField] private Transform MovingTile;
+    [SerializeField] private Transform[] Locations;
 
-    public byte LocationIndex = 0;
-    public float TileSpeed =1f;
-    private float m_Step;
-    private Vector3 m_Direction;
+    [Header("Settings")]
+    [SerializeField] private byte LocationIndex = 0;
+    [SerializeField] private float TileSpeed =1f;
+
+    private float step;
 
     private void Update()
     {
         if (MovingTile.position != Locations[LocationIndex].position)
         {
-            m_Step = TileSpeed * Time.deltaTime;
+            step = TileSpeed * Time.deltaTime;
             MovingTile.position = Vector3.MoveTowards(MovingTile.position, Locations[LocationIndex].position, m_Step);
         }
         else
