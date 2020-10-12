@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class PlayerControls : MonoBehaviour
@@ -10,25 +11,29 @@ public class PlayerControls : MonoBehaviour
     [Header("Player Control")]
     [SerializeField] float m_speed = 10f;
     [SerializeField] float jumpSpeed = 10f;
+
     // State 
-    //bool isAlive = true;
+    //bool isAlive = true
 
     // Cached component references
     Rigidbody2D myRigidBody;
     Animator myAnimator;
-    
+    BoxCollider2D myCollider;
+    [SerializeField] private LayerMask platformLayerMask;
     // Message then methods
     void Start()
     {
         myRigidBody = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
+        myCollider = GetComponent<BoxCollider2D>();
     }
 
     void Update()
     {
         Run();
-        Flip();
         Jump();
+        Flip();
+       
     }
     private void Run()
     {
@@ -39,15 +44,34 @@ public class PlayerControls : MonoBehaviour
 
     private void Jump()
     {
-        if (Input.GetButtonDown("Jump"))
+        if (IsGrounded()  && Input.GetButtonDown("Jump"))
         {
-            Vector2 jumpVelocityToAdd = new Vector2(0f, jumpSpeed);// add velocity on y
+            Vector2 jumpVelocityToAdd = new Vector2(0f, jumpSpeed);
             myRigidBody.velocity += jumpVelocityToAdd;
-
         }
     }
-    private void Flip()
+
+    private bool IsGrounded()
+    {
+        float extraHeightText = 0.5f;
+        RaycastHit2D rayCastHit = Physics2D.BoxCast(myCollider.bounds.center, myCollider.bounds.size, 0f, Vector2.down, extraHeightText, platformLayerMask);
+        Color rayColor;
+        if (rayCastHit.collider != null)
         {
+            rayColor = Color.green;
+        }
+        else
+        {
+            rayColor = Color.red;
+        }
+        Debug.DrawRay(myCollider.bounds.center + new Vector3(myCollider.bounds.extents.x, 0), Vector2.down * (myCollider.bounds.extents.y + extraHeightText), rayColor);
+        Debug.DrawRay(myCollider.bounds.center - new Vector3(myCollider.bounds.extents.x, 0), Vector2.down * (myCollider.bounds.extents.y + extraHeightText), rayColor);
+        Debug.DrawRay(myCollider.bounds.center - new Vector3(myCollider.bounds.extents.x, myCollider.bounds.extents.y + extraHeightText), Vector2.right * (myCollider.bounds.extents.x * 2f), rayColor);
+        // Debug.Log(rayCastHit.collider);
+        return rayCastHit.collider != null;
+    }
+    private void Flip()
+    {
         if (Input.GetAxisRaw("Horizontal") > 0)
         {
             var newScale = new Vector3(
@@ -71,4 +95,9 @@ public class PlayerControls : MonoBehaviour
             myAnimator.SetBool("Running", false);
         }
     }
+    private void ClimbLadder()
+    {
+
+    }
+        
 }
