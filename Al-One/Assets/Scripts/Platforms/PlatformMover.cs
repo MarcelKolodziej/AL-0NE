@@ -4,19 +4,20 @@ using UnityEngine;
 
 public class PlatformMover : MonoBehaviour
 {
-    [Header("Objects to assign")]
+    [Header("Objects To Assign")]
     [SerializeField] private Transform MovingTile;
     [SerializeField] private Transform[] Locations;
 
     [Header("Settings")]
-    [SerializeField] private AnimationCurve AnimationCurve = AnimationCurve.Linear(0,0,1,1);
+    [SerializeField] private AnimationCurve AnimationCurve = AnimationCurve.Linear(0,0,1,1); // used to make the platform movements look more animated
     [SerializeField] private int StartingLocation = 0;
     [SerializeField] private float TileMoveSpeed = 1f;
 
     [Header("Public Fields")]
     public bool IsActive = true;
-    public bool PlayOneshot = false; // Added this so we can sequence a bunch of platforms at the same time  and ensure they stay in sync
+    public bool PlayOneshot = false; // Added this so we can sequence a bunch of platforms together at the same time  and ensure they stay in sync
 
+    // maybe re-work this to use time instead of speed, might make it easier to manage
     private float startTime;
     private int currentLocationIndex = 0;
     private int targetLocationIndex = 0;
@@ -30,6 +31,9 @@ public class PlatformMover : MonoBehaviour
         UpdatePlatformTargets();
     }
 
+    /// <summary>
+    /// Used to determin current location and destination
+    /// </summary>
     private void UpdatePlatformTargets()
     {
         currentLocationIndex++;
