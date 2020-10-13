@@ -14,11 +14,12 @@ public class PlatformSequencer : MonoBehaviour
     [SerializeField] private float CloseDelay = 0f;
     public bool IsActive = true;
 
-    private Coroutine coroutine;
+    private IEnumerator coroutine;
 
     private void Start()
     {
-        coroutine = StartCoroutine("MoveSequence");
+        coroutine = MoveSequence();
+        StartCoroutine(coroutine);
     }
 
     private void OnDestroy()
@@ -34,7 +35,8 @@ public class PlatformSequencer : MonoBehaviour
     {
         if (coroutine == null)
         {
-            coroutine = StartCoroutine("MoveSequence");
+            coroutine = MoveSequence();
+            StartCoroutine(coroutine);
         }
     }
 
@@ -55,15 +57,15 @@ public class PlatformSequencer : MonoBehaviour
     /// <summary>
     /// Coroutine for the actual sequence
     /// </summary>
-    private IEnumerable MoveSequence()
+    private IEnumerator MoveSequence()
     {
+        yield return new WaitForSeconds(StartDelay);
+
         while (IsActive)
         {
-            yield return new WaitForSeconds(StartDelay);
-
             foreach (PlatformMover platform in PlatformMovers)
             {
-                platform.PlayOneshot = true;
+                platform.PlayOneShot();
                 yield return new WaitForSeconds(TickDelay);
             }
 
@@ -71,7 +73,7 @@ public class PlatformSequencer : MonoBehaviour
 
             foreach (PlatformMover platform in PlatformMovers)
             {
-                platform.PlayOneshot = true;
+                platform.PlayOneShot();
                 yield return new WaitForSeconds(TickDelay);
             }
 

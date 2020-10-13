@@ -15,7 +15,8 @@ public class PlatformMover : MonoBehaviour
 
     [Header("Public Fields")]
     public bool IsActive = true;
-    public bool PlayOneshot = false; // Added this so we can sequence a bunch of platforms together at the same time  and ensure they stay in sync
+    private bool playOneshot = false;
+    // Added this so we can sequence a bunch of platforms together at the same time  and ensure they stay in sync
 
     // maybe re-work this to use time instead of speed, might make it easier to manage
     private float startTime;
@@ -54,6 +55,17 @@ public class PlatformMover : MonoBehaviour
         journeyLenght = Vector3.Distance(Locations[currentLocationIndex].position, Locations[targetLocationIndex].position);
     }
 
+    /// <summary>
+    /// Forces the platform to move in and out once.
+    /// </summary>
+    public void PlayOneShot()
+    {
+        playOneshot = true;
+        IsActive = true;
+        startTime = Time.time;
+        journeyLenght = Vector3.Distance(Locations[currentLocationIndex].position, Locations[targetLocationIndex].position);
+    }
+
     private void Update()
     {
         if (IsActive)
@@ -70,9 +82,9 @@ public class PlatformMover : MonoBehaviour
             {
                 UpdatePlatformTargets();
 
-                if (PlayOneshot)
+                if (playOneshot)
                 {
-                    PlayOneshot = false;
+                    playOneshot = false;
                     IsActive = false;
                 }
             }
