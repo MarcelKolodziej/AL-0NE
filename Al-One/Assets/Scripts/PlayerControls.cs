@@ -103,6 +103,7 @@ public class PlayerControls : MonoBehaviour
         if (!myCollider.IsTouchingLayers(LayerMask.GetMask("Ladder"))) 
         {
             myAnimator.SetBool("Climbing", false);
+            myAnimator.SetBool("Climbing_Idle", false);
             myRigidBody.gravityScale = gravityScaleAtStart;
             return; 
         }
@@ -112,7 +113,18 @@ public class PlayerControls : MonoBehaviour
         myRigidBody.velocity = playerClimbingVelocity;
 
         bool playerHasVerticalSpeed = Mathf.Abs(myRigidBody.velocity.y) > Mathf.Epsilon;
-        myAnimator.SetBool("Climbing", playerHasVerticalSpeed);
+
+        if (playerHasVerticalSpeed)
+        {
+            myAnimator.SetBool("Climbing", true);
+            myAnimator.SetBool("Climbing_Idle", false);
+        }
+        else
+        {
+            myAnimator.SetBool("Climbing", true);
+            myAnimator.SetBool("Climbing_Idle", true);
+        }
+
         myRigidBody.gravityScale = 0f;
     }
 }
