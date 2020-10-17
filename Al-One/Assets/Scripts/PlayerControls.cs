@@ -13,10 +13,10 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] float jumpSpeed = 10f;
     [SerializeField] float m_verticalSpeed = 10f;
     float gravityScaleAtStart;
-   // State 
-   //bool isAlive = true
+    // State 
+    //bool isAlive = true
 
-   // Cached component references
+    // Cached component references
     Rigidbody2D myRigidBody;
     Animator myAnimator;
     BoxCollider2D myCollider;
@@ -47,7 +47,7 @@ public class PlayerControls : MonoBehaviour
 
     private void Jump()
     {
-        if (IsGrounded()  && Input.GetButtonDown("Jump"))
+        if (IsGrounded() && Input.GetButtonDown("Jump"))
         {
             Vector2 jumpVelocityToAdd = new Vector2(0f, jumpSpeed);
             myRigidBody.velocity += jumpVelocityToAdd;
@@ -127,5 +127,21 @@ public class PlayerControls : MonoBehaviour
         }
 
         myRigidBody.gravityScale = 0f;
+    }
+
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.name.Equals("Platform"))
+        {
+            this.transform.parent = col.transform;
+        }
+    }
+
+    void OnCollisionExit2D(Collision2D col)
+    {
+        if (col.gameObject.name.Equals("Platform"))
+        {
+            this.transform.parent = null;
+        }
     }
 }
