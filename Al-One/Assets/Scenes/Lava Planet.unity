@@ -246,7 +246,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d2935cea96736945887b6bf9e6e6dce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  breakDelay: 1
+  ObjectRigidbody: {fileID: 0}
+  DropDelay: 1
+  BreakDelay: 1
 --- !u!483693784 &87546426
 TilemapRenderer:
   m_ObjectHideFlags: 0
@@ -1061,7 +1063,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d2935cea96736945887b6bf9e6e6dce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  breakDelay: 1
+  ObjectRigidbody: {fileID: 0}
+  DropDelay: 1
+  BreakDelay: 1
 --- !u!483693784 &361299861
 TilemapRenderer:
   m_ObjectHideFlags: 0
@@ -1711,7 +1715,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d2935cea96736945887b6bf9e6e6dce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  breakDelay: 1
+  ObjectRigidbody: {fileID: 1424225816}
+  DropDelay: 1
+  BreakDelay: 1
 --- !u!483693784 &508902244
 TilemapRenderer:
   m_ObjectHideFlags: 0
@@ -3343,7 +3349,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d2935cea96736945887b6bf9e6e6dce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  breakDelay: 1
+  ObjectRigidbody: {fileID: 0}
+  DropDelay: 1
+  BreakDelay: 1
 --- !u!483693784 &794565071
 TilemapRenderer:
   m_ObjectHideFlags: 0
@@ -64137,7 +64145,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d2935cea96736945887b6bf9e6e6dce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  breakDelay: 1
+  ObjectRigidbody: {fileID: 0}
+  DropDelay: 1
+  BreakDelay: 1
 --- !u!483693784 &2045564482
 TilemapRenderer:
   m_ObjectHideFlags: 0
@@ -64708,7 +64718,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d2935cea96736945887b6bf9e6e6dce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  breakDelay: 1
+  ObjectRigidbody: {fileID: 0}
+  DropDelay: 1
+  BreakDelay: 1
 --- !u!1 &2120698577
 GameObject:
   m_ObjectHideFlags: 0
