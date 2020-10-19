@@ -78,7 +78,7 @@ public class PlayerControls : MonoBehaviour
         if (Input.GetAxisRaw("Horizontal") > 0)
         {
             var newScale = new Vector3(
-            -1 * Mathf.Abs(this.transform.localScale.x),
+            1 * Mathf.Abs(this.transform.localScale.x),
              1 * Mathf.Abs(this.transform.localScale.y),
              1 * Mathf.Abs(this.transform.localScale.y));
             this.transform.localScale = newScale;
@@ -87,7 +87,7 @@ public class PlayerControls : MonoBehaviour
         else if (Input.GetAxisRaw("Horizontal") < 0)
         {
             var newScale = new Vector3(
-            1 * Mathf.Abs(this.transform.localScale.x),
+            -1 * Mathf.Abs(this.transform.localScale.x),
             1 * Mathf.Abs(this.transform.localScale.y),
             1 * Mathf.Abs(this.transform.localScale.y));
             this.transform.localScale = newScale;

@@ -19,7 +19,7 @@ TagManager:
   - Ground
   - Ladder
   - Background
-  - 
+  - Platforms
   - 
   - 
   - 
@@ -54,4 +54,7 @@ TagManager:
     locked: 0
   - name: Foreground
     uniqueID: 1248028713
+    locked: 0
+  - name: Platforms
+    uniqueID: 3806893653
     locked: 0
