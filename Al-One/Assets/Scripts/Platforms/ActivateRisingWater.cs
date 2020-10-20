@@ -6,11 +6,10 @@ public class ActivateRisingWater : MonoBehaviour
 {
     [Header("Objects To Assign")]
     [SerializeField] private RisingWater RisingWater;
-    private bool pressed = false;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (!pressed && other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player")
         {
             RisingWater.ActivateRisingWater();
         }

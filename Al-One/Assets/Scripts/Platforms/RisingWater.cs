@@ -17,9 +17,12 @@ public class RisingWater : MonoBehaviour
 
     public void ActivateRisingWater()
     {
-        IsActive = true;
-        startTime = Time.time;
-        journeyLenght = Vector3.Distance(StartingPoint.position, EndingPoint.position);
+        if (!IsActive)
+        {
+            IsActive = true;
+            startTime = Time.time;
+            journeyLenght = Vector3.Distance(StartingPoint.position, EndingPoint.position);
+        }
     }
 
     public void ResetRisingWater()
