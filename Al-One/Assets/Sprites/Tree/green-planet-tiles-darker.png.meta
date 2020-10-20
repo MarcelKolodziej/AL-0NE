@@ -1,0 +1,580 @@
+fileFormatVersion: 2
+guid: 49cd68048fcd4ea4a8890a728f84d18d
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 309528037942057988
+    second: green-planet-tiles-darker_0
+  - first:
+      213: -1520227509715098811
+    second: green-planet-tiles-darker_1
+  - first:
+      213: -6238417215525481420
+    second: green-planet-tiles-darker_2
+  - first:
+      213: -2871746986768457047
+    second: green-planet-tiles-darker_3
+  - first:
+      213: -8221189691464986183
+    second: green-planet-tiles-darker_4
+  - first:
+      213: 4598504020857574300
+    second: green-planet-tiles-darker_5
+  - first:
+      213: -8889868786441974252
+    second: green-planet-tiles-darker_6
+  - first:
+      213: -8421481385701412820
+    second: green-planet-tiles-darker_7
+  - first:
+      213: -4953210849051210207
+    second: green-planet-tiles-darker_8
+  - first:
+      213: -129930651131482559
+    second: green-planet-tiles-darker_9
+  - first:
+      213: 2118008629651066717
+    second: green-planet-tiles-darker_10
+  - first:
+      213: 3144627155648175441
+    second: green-planet-tiles-darker_11
+  - first:
+      213: -5550886713819967011
+    second: green-planet-tiles-darker_12
+  - first:
+      213: 6220792098281998968
+    second: green-planet-tiles-darker_13
+  - first:
+      213: 1079844241000442267
+    second: green-planet-tiles-darker_14
+  - first:
+      213: -7465074584132507724
+    second: green-planet-tiles-darker_15
+  - first:
+      213: -3574787889101355463
+    second: green-planet-tiles-darker_16
+  - first:
+      213: -4550700828571474671
+    second: green-planet-tiles-darker_17
+  - first:
+      213: -1921434400601287899
+    second: green-planet-tiles-darker_18
+  - first:
+      213: -165355474623440010
+    second: green-planet-tiles-darker_19
+  - first:
+      213: 1802134412150863356
+    second: green-planet-tiles-darker_20
+  - first:
+      213: -7213247114564100143
+    second: green-planet-tiles-darker_21
+  - first:
+      213: -8121486136602125109
+    second: green-planet-tiles-darker_22
+  - first:
+      213: -5401894029686480245
+    second: green-planet-tiles-darker_23
+  - first:
+      213: 3640510145502517614
+    second: green-planet-tiles-darker_24
+  - first:
+      213: 2975942588666612898
+    second: green-planet-tiles-darker_25
+  - first:
+      213: -1124189886083526473
+    second: green-planet-tiles-darker_26
+  - first:
+      213: -6611103609651844197
+    second: green-planet-tiles-darker_27
+  - first:
+      213: 8342050921214021632
+    second: green-planet-tiles-darker_28
+  - first:
+      213: 9032267055944865486
+    second: green-planet-tiles-darker_29
+  - first:
+      213: -1859058005530152375
+    second: green-planet-tiles-darker_30
+  - first:
+      213: 1328729468855599797
+    second: green-planet-tiles-darker_31
+  - first:
+      213: -697638798238904293
+    second: green-planet-tiles-darker_32
+  - first:
+      213: 7186139496713860412
+    second: green-planet-tiles-darker_33
+  - first:
+      213: -4646598019510033018
+    second: green-planet-tiles-darker_34
+  - first:
+      213: -6474139353577825068
+    second: green-planet-tiles-darker_35
+  - first:
+      213: 6272192909563485845
+    second: green-planet-tiles-darker_36
+  - first:
+      213: 6557566978484916620
+    second: green-planet-tiles-darker_37
+  - first:
+      213: 5044633091674295967
+    second: green-planet-tiles-darker_38
+  - first:
+      213: 4812674287502337729
+    second: green-planet-tiles-darker_39
+  - first:
+      213: -8778211625363795316
+    second: green-planet-tiles-darker_40
+  - first:
+      213: 4552318506868060117
+    second: green-planet-tiles-darker_41
+  - first:
+      213: -2825894703876513531
+    second: green-planet-tiles-darker_42
+  - first:
+      213: 1534540247125907054
+    second: green-planet-tiles-darker_43
+  - first:
+      213: -5323007368502411803
+    second: green-planet-tiles-darker_44
+  - first:
+      213: 523859266494543904
+    second: green-planet-tiles-darker_45
+  - first:
+      213: -7960283330864624582
+    second: green-planet-tiles-darker_46
+  - first:
+      213: 1687584462134420057
+    second: green-planet-tiles-darker_47
+  - first:
+      213: -6569996477864258955
+    second: green-planet-tiles-darker_48
+  - first:
+      213: -8214873548217106711
+    second: green-planet-tiles-darker_49
+  - first:
+      213: 2647400909516067625
+    second: green-planet-tiles-darker_50
+  - first:
+      213: -6222537586969412323
+    second: green-planet-tiles-darker_51
+  - first:
+      213: -3544318817255807677
+    second: green-planet-tiles-darker_52
+  - first:
+      213: 8675190507414452284
+    second: green-planet-tiles-darker_53
+  - first:
+      213: -5542011539279927082
+    second: green-planet-tiles-darker_54
+  - first:
+      213: -1917730789625586068
+    second: green-planet-tiles-darker_55
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: green-planet-tiles-darker_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 112
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40c5f8d4c1aab4400800000000000000
+      internalID: 309528037942057988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: green-planet-tiles-darker_1
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 112
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 543a7a9622117eae0800000000000000
+      internalID: -1520227509715098811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: green-planet-tiles-darker_2
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 112
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4341ce35890bc69a0800000000000000
+      internalID: -6238417215525481420
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: green-planet-tiles-darker_3
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 112
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a22ed8a4518528d0800000000000000
+      internalID: -2871746986768457047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: green-planet-tiles-darker_4
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 112
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b15029888778ed80800000000000000
+      internalID: -8221189691464986183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: green-planet-tiles-darker_5
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 112
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c93db650b0b21df30800000000000000
+      internalID: 4598504020857574300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: green-planet-tiles-darker_24
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6912e760b0b58230800000000000000
+      internalID: 3640510145502517614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: green-planet-tiles-darker_31
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b24bb97968907210800000000000000
+      internalID: 1328729468855599797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: green-planet-tiles-darker_38
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9e4d6bb113220640800000000000000
+      internalID: 5044633091674295967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: green-planet-tiles-darker_39
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c6ab3e04cd0ac240800000000000000
+      internalID: 4812674287502337729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: green-planet-tiles-darker_46
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3cc9586c74678190800000000000000
+      internalID: -7960283330864624582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: green-planet-tiles-darker_47
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 952adf980218b6710800000000000000
+      internalID: 1687584462134420057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: green-planet-tiles-darker_54
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d8aa1c2ed1d613b0800000000000000
+      internalID: -5542011539279927082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: green-planet-tiles-darker_55
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6e9985e10ad265e0800000000000000
+      internalID: -1917730789625586068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
