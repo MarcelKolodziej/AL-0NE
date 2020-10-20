@@ -169,4 +169,8 @@ MonoBehaviour:
   m_verticalSpeed: 10
   platformLayerMask:
     serializedVersion: 2
+<<<<<<< HEAD
     m_Bits: 1536
+=======
+    m_Bits: 2560
+>>>>>>> c75f87270ad59918a68a0b7d0ea73f9cd62bfa99

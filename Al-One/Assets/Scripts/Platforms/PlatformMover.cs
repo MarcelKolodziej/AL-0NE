@@ -60,10 +60,13 @@ public class PlatformMover : MonoBehaviour
     /// </summary>
     public void PlayOneShot()
     {
-        playOneshot = true;
-        IsActive = true;
-        startTime = Time.time;
-        journeyLenght = Vector3.Distance(Locations[currentLocationIndex].position, Locations[targetLocationIndex].position);
+        if (!IsActive)
+        {
+            playOneshot = true;
+            IsActive = true;
+            startTime = Time.time;
+            journeyLenght = Vector3.Distance(Locations[currentLocationIndex].position, Locations[targetLocationIndex].position);
+        }
     }
 
     private void Update()
