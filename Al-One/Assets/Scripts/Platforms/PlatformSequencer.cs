@@ -18,8 +18,11 @@ public class PlatformSequencer : MonoBehaviour
 
     private void Start()
     {
-        coroutine = MoveSequence();
-        StartCoroutine(coroutine);
+        if (IsActive)
+        {
+            coroutine = MoveSequence();
+            StartCoroutine(coroutine);
+        }
     }
 
     private void OnDestroy()
