@@ -5,11 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - CMVirtualCam
-<<<<<<< HEAD
   - Platform
-=======
   - FallingBlock
->>>>>>> c75f87270ad59918a68a0b7d0ea73f9cd62bfa99
   layers:
   - Default
   - TransparentFX
@@ -22,14 +19,9 @@ TagManager:
   - Player
   - Ground
   - Ladder
-<<<<<<< HEAD
   - Background
   - Platforms
-=======
   - FallingObjects
-  - 
->>>>>>> c75f87270ad59918a68a0b7d0ea73f9cd62bfa99
-  - 
   - 
   - 
   - 
