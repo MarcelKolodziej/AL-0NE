@@ -15,7 +15,6 @@ public class InteractableButton : MonoBehaviour
         {
             Door.PlayOneShot();
             ButtonAnimator.SetBool("SwitchFlipped", true);
-            pressed = true;
         }
     }
 }
