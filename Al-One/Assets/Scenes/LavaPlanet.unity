@@ -700,9 +700,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjectRigidbody: {fileID: 87546429}
-  DropDelay: 0.5
-  BreakDelay: 0.5
+  ResetDelay: 1
   DestroyAfterTouch: 1
+  AutomaticReset: 0
 --- !u!483693784 &87546426
 TilemapRenderer:
   m_ObjectHideFlags: 0
@@ -950,9 +950,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjectRigidbody: {fileID: 96041088}
-  DropDelay: 0.5
-  BreakDelay: 0.5
+  ResetDelay: 1
   DestroyAfterTouch: 0
+  AutomaticReset: 0
 --- !u!483693784 &96041090
 TilemapRenderer:
   m_ObjectHideFlags: 0
@@ -1134,7 +1134,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 103576301}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 130.5, y: -132.8, z: 0}
+  m_LocalPosition: {x: -4.7, y: 1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2196,9 +2196,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjectRigidbody: {fileID: 248009029}
-  DropDelay: 0.5
-  BreakDelay: 0.5
+  ResetDelay: 1
   DestroyAfterTouch: 0
+  AutomaticReset: 0
 --- !u!483693784 &248009031
 TilemapRenderer:
   m_ObjectHideFlags: 0
@@ -2900,9 +2900,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjectRigidbody: {fileID: 361299864}
-  DropDelay: 0.5
-  BreakDelay: 0.5
+  ResetDelay: 1
   DestroyAfterTouch: 1
+  AutomaticReset: 0
 --- !u!483693784 &361299861
 TilemapRenderer:
   m_ObjectHideFlags: 0
@@ -3150,9 +3150,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjectRigidbody: {fileID: 362144888}
-  DropDelay: 0.5
-  BreakDelay: 0.5
+  ResetDelay: 1
   DestroyAfterTouch: 0
+  AutomaticReset: 0
 --- !u!483693784 &362144890
 TilemapRenderer:
   m_ObjectHideFlags: 0
@@ -3897,6 +3897,235 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &467627198
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 467627199}
+  - component: {fileID: 467627204}
+  - component: {fileID: 467627203}
+  - component: {fileID: 467627202}
+  - component: {fileID: 467627201}
+  - component: {fileID: 467627200}
+  m_Layer: 13
+  m_Name: Platform
+  m_TagString: FallingBlock
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &467627199
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 467627198}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 574801259}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &467627200
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 467627198}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &467627201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 467627198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d2935cea96736945887b6bf9e6e6dce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectRigidbody: {fileID: 467627200}
+  ResetDelay: 1
+  DestroyAfterTouch: 0
+  AutomaticReset: 1
+--- !u!483693784 &467627202
+TilemapRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 467627198}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: -1915468891
+  m_SortingLayer: 2
+  m_SortingOrder: 1
+  m_ChunkSize: {x: 32, y: 32, z: 32}
+  m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
+  m_MaxChunkCount: 16
+  m_MaxFrameAge: 16
+  m_SortOrder: 0
+  m_Mode: 0
+  m_DetectChunkCullingBounds: 0
+  m_MaskInteraction: 0
+--- !u!19719996 &467627203
+TilemapCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 467627198}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_MaximumTileChangeCount: 1000
+  m_ExtrusionFactor: 0.00001
+--- !u!1839735485 &467627204
+Tilemap:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 467627198}
+  m_Enabled: 1
+  m_Tiles:
+  - first: {x: -1, y: 0, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 0
+      m_TileSpriteIndex: 2
+      m_TileMatrixIndex: 1
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      m_AllTileFlags: 1073741826
+  m_AnimatedTiles: {}
+  m_TileAssetArray:
+  - m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: 96270584a68ce314998312cb0e4c1055, type: 2}
+  m_TileSpriteArray:
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 7323906098350758705, guid: 49008b7ff9c82644288ee8c9c6b456df, type: 3}
+  m_TileMatrixArray:
+  - m_RefCount: 0
+    m_Data:
+      e00: 0
+      e01: -4.3871048e+30
+      e02: -3.7645237e+19
+      e03: 0.0000000020267539
+      e10: NaN
+      e11: 4.5905e-41
+      e12: 6e-45
+      e13: 4e-45
+      e20: 1.04e-43
+      e21: -3.7645976e+19
+      e22: -2.367766e-33
+      e23: -2.367766e-33
+      e30: 0
+      e31: 6e-45
+      e32: 3e-45
+      e33: 3e-45
+  - m_RefCount: 1
+    m_Data:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 0
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+  m_TileColorArray:
+  - m_RefCount: 1
+    m_Data: {r: 1, g: 1, b: 1, a: 1}
+  m_TileObjectToInstantiateArray: []
+  m_AnimationFrameRate: 1
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Origin: {x: -2, y: 0, z: 0}
+  m_Size: {x: 9, y: 2, z: 1}
+  m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
+  m_TileOrientation: 0
+  m_TileOrientationMatrix:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
 --- !u!1 &472000656
 GameObject:
   m_ObjectHideFlags: 0
@@ -4483,9 +4712,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjectRigidbody: {fileID: 508902247}
-  DropDelay: 0.5
-  BreakDelay: 0.5
+  ResetDelay: 1
   DestroyAfterTouch: 1
+  AutomaticReset: 0
 --- !u!483693784 &508902244
 TilemapRenderer:
   m_ObjectHideFlags: 0
@@ -5999,6 +6228,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &574801258
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 574801259}
+  m_Layer: 13
+  m_Name: BreakOnTouch (26)
+  m_TagString: FallingBlock
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &574801259
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 574801258}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 8, y: -3, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 467627199}
+  m_Father: {fileID: 1892735345}
+  m_RootOrder: 37
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &580177184
 GameObject:
   m_ObjectHideFlags: 0
@@ -6638,9 +6898,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjectRigidbody: {fileID: 639094794}
-  DropDelay: 0.5
-  BreakDelay: 0.5
+  ResetDelay: 1
   DestroyAfterTouch: 0
+  AutomaticReset: 0
 --- !u!483693784 &639094796
 TilemapRenderer:
   m_ObjectHideFlags: 0
@@ -13893,9 +14153,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjectRigidbody: {fileID: 794565074}
-  DropDelay: 0.5
-  BreakDelay: 0.5
+  ResetDelay: 1
   DestroyAfterTouch: 1
+  AutomaticReset: 0
 --- !u!483693784 &794565071
 TilemapRenderer:
   m_ObjectHideFlags: 0
@@ -15054,9 +15314,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjectRigidbody: {fileID: 978224422}
-  DropDelay: 0.5
-  BreakDelay: 0.5
+  ResetDelay: 1
   DestroyAfterTouch: 0
+  AutomaticReset: 0
 --- !u!483693784 &978224424
 TilemapRenderer:
   m_ObjectHideFlags: 0
@@ -19393,9 +19653,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjectRigidbody: {fileID: 1026224600}
-  DropDelay: 0.5
-  BreakDelay: 0.5
+  ResetDelay: 1
   DestroyAfterTouch: 0
+  AutomaticReset: 0
 --- !u!483693784 &1026224602
 TilemapRenderer:
   m_ObjectHideFlags: 0
@@ -20829,9 +21089,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjectRigidbody: {fileID: 1148022437}
-  DropDelay: 0.5
-  BreakDelay: 0.5
+  ResetDelay: 1
   DestroyAfterTouch: 0
+  AutomaticReset: 0
 --- !u!483693784 &1148022439
 TilemapRenderer:
   m_ObjectHideFlags: 0
@@ -23205,9 +23465,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjectRigidbody: {fileID: 1395282076}
-  DropDelay: 0.5
-  BreakDelay: 0.5
+  ResetDelay: 1
   DestroyAfterTouch: 0
+  AutomaticReset: 0
 --- !u!483693784 &1395282078
 TilemapRenderer:
   m_ObjectHideFlags: 0
@@ -23511,9 +23771,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjectRigidbody: {fileID: 1413761839}
-  DropDelay: 0.5
-  BreakDelay: 0.5
+  ResetDelay: 1
   DestroyAfterTouch: 0
+  AutomaticReset: 0
 --- !u!483693784 &1413761841
 TilemapRenderer:
   m_ObjectHideFlags: 0
@@ -72825,9 +73085,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjectRigidbody: {fileID: 1428795320}
-  DropDelay: 0.5
-  BreakDelay: 0.5
+  ResetDelay: 1
   DestroyAfterTouch: 0
+  AutomaticReset: 0
 --- !u!483693784 &1428795322
 TilemapRenderer:
   m_ObjectHideFlags: 0
@@ -73191,9 +73451,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjectRigidbody: {fileID: 1513788300}
-  DropDelay: 0.5
-  BreakDelay: 0.5
+  ResetDelay: 1
   DestroyAfterTouch: 0
+  AutomaticReset: 0
 --- !u!483693784 &1513788302
 TilemapRenderer:
   m_ObjectHideFlags: 0
@@ -73480,9 +73740,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjectRigidbody: {fileID: 1563937371}
-  DropDelay: 0.5
-  BreakDelay: 0.5
+  ResetDelay: 1
   DestroyAfterTouch: 0
+  AutomaticReset: 0
 --- !u!483693784 &1563937373
 TilemapRenderer:
   m_ObjectHideFlags: 0
@@ -74109,9 +74369,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjectRigidbody: {fileID: 1610584415}
-  DropDelay: 0.5
-  BreakDelay: 0.5
+  ResetDelay: 1
   DestroyAfterTouch: 0
+  AutomaticReset: 0
 --- !u!483693784 &1610584417
 TilemapRenderer:
   m_ObjectHideFlags: 0
@@ -74338,9 +74598,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjectRigidbody: {fileID: 1612383905}
-  DropDelay: 0.5
-  BreakDelay: 0.5
+  ResetDelay: 1
   DestroyAfterTouch: 0
+  AutomaticReset: 0
 --- !u!483693784 &1612383907
 TilemapRenderer:
   m_ObjectHideFlags: 0
@@ -75832,9 +76092,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjectRigidbody: {fileID: 1821151034}
-  DropDelay: 0.5
-  BreakDelay: 0.5
+  ResetDelay: 1
   DestroyAfterTouch: 0
+  AutomaticReset: 0
 --- !u!483693784 &1821151036
 TilemapRenderer:
   m_ObjectHideFlags: 0
@@ -76951,6 +77211,7 @@ Transform:
   - {fileID: 1728747445}
   - {fileID: 325874577}
   - {fileID: 2133019421}
+  - {fileID: 574801259}
   m_Father: {fileID: 610382869}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -124428,9 +124689,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjectRigidbody: {fileID: 1934889747}
-  DropDelay: 0.5
-  BreakDelay: 0.5
+  ResetDelay: 1
   DestroyAfterTouch: 0
+  AutomaticReset: 0
 --- !u!483693784 &1934889749
 TilemapRenderer:
   m_ObjectHideFlags: 0
@@ -124872,9 +125133,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjectRigidbody: {fileID: 1979328206}
-  DropDelay: 0.5
-  BreakDelay: 0.5
+  ResetDelay: 1
   DestroyAfterTouch: 0
+  AutomaticReset: 0
 --- !u!483693784 &1979328208
 TilemapRenderer:
   m_ObjectHideFlags: 0
@@ -125534,9 +125795,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjectRigidbody: {fileID: 2045564485}
-  DropDelay: 0.5
-  BreakDelay: 0.5
+  ResetDelay: 1
   DestroyAfterTouch: 1
+  AutomaticReset: 0
 --- !u!483693784 &2045564482
 TilemapRenderer:
   m_ObjectHideFlags: 0
@@ -126025,9 +126286,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjectRigidbody: {fileID: 2075532786}
-  DropDelay: 0.5
-  BreakDelay: 0.5
+  ResetDelay: 1
   DestroyAfterTouch: 0
+  AutomaticReset: 0
 --- !u!483693784 &2075532788
 TilemapRenderer:
   m_ObjectHideFlags: 0
@@ -126390,9 +126651,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjectRigidbody: {fileID: 2078053198}
-  DropDelay: 0.5
-  BreakDelay: 0.5
+  ResetDelay: 1
   DestroyAfterTouch: 1
+  AutomaticReset: 0
 --- !u!50 &2078053198
 Rigidbody2D:
   serializedVersion: 4

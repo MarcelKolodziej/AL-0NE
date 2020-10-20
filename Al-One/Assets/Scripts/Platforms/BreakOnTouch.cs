@@ -8,9 +8,9 @@ public class BreakOnTouch : MonoBehaviour
     [SerializeField] private Rigidbody2D ObjectRigidbody;
 
     [Header("Settings")]
-    [SerializeField] private float DropDelay = 1f;
-    [SerializeField] private float BreakDelay = 1f;
+    [SerializeField] private float ResetDelay = 1f;
     [SerializeField] private bool DestroyAfterTouch = false;
+    [SerializeField] private bool AutomaticReset = false;
 
     private Vector3 startPosition;
     private bool blockHasFallen = false;
@@ -43,8 +43,13 @@ public class BreakOnTouch : MonoBehaviour
             ObjectRigidbody.bodyType = RigidbodyType2D.Dynamic;
             ObjectRigidbody.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
             ObjectRigidbody.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
+
+            if (AutomaticReset)
+            {
+                StartCoroutine("WaitForAutomaticReset");
+            }
         }
-        else
+        else if (!AutomaticReset)
         {
             if (collision.gameObject.tag != ("FallingBlock") && collision.gameObject.name != "Foreground" && collision.gameObject.tag != "Player")
             {
@@ -63,15 +68,17 @@ public class BreakOnTouch : MonoBehaviour
     /// <summary>
     /// Wait then break
     /// </summary>
-    private IEnumerator WaitForBreak()
+    private IEnumerator WaitForAutomaticReset()
     {
-        yield return new WaitForSeconds(DropDelay);
-        ObjectRigidbody.bodyType = RigidbodyType2D.Dynamic;
-        yield return new WaitForSeconds(BreakDelay);
+        yield return new WaitForSeconds(ResetDelay);
 
         if (DestroyAfterTouch)
         {
             gameObject.SetActive(false);
+        }
+        else
+        {
+            ResetObjects();
         }
     }
 }
