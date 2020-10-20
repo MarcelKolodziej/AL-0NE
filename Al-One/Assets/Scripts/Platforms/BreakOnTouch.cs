@@ -46,21 +46,18 @@ public class BreakOnTouch : MonoBehaviour
         }
         else
         {
-            if (DestroyAfterTouch)
+            if (collision.gameObject.tag != ("FallingBlock") && collision.gameObject.name != "Foreground" && collision.gameObject.tag != "Player")
             {
-                gameObject.SetActive(false);
-            }
-            else if (collision.gameObject.tag != ("FallingBlock") && collision.gameObject.name != "Foreground" && collision.gameObject.tag != "Player")
-            {
-                Debug.LogError(collision.collider.gameObject.name);
-                Debug.LogError(collision.otherRigidbody.gameObject.name);
-                ObjectRigidbody.bodyType = RigidbodyType2D.Static;
+                if (DestroyAfterTouch)
+                {
+                    gameObject.SetActive(false);
+                }
+                else
+                {
+                    ObjectRigidbody.bodyType = RigidbodyType2D.Static;
+                }
             }
         }
-
-        Debug.LogError(collision.otherRigidbody.gameObject.name);
-
-        Debug.LogError("Collide");
     }
 
     /// <summary>
@@ -73,7 +70,8 @@ public class BreakOnTouch : MonoBehaviour
         yield return new WaitForSeconds(BreakDelay);
 
         if (DestroyAfterTouch)
-        { 
+        {
+            gameObject.SetActive(false);
         }
     }
 }
