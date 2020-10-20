@@ -9,7 +9,7 @@ public class PlatformMover : MonoBehaviour
     [SerializeField] private Transform[] Locations;
 
     [Header("Settings")]
-    [SerializeField] private AnimationCurve AnimationCurve = AnimationCurve.Linear(0,0,1,1); // used to make the platform movements look more animated
+    [SerializeField] private AnimationCurve AnimationCurve = AnimationCurve.Linear(0, 0, 1, 1); // used to make the platform movements look more animated
     [SerializeField] private int StartingLocation = 0;
     [SerializeField] private float TileMoveSpeed = 1f;
 
@@ -26,10 +26,7 @@ public class PlatformMover : MonoBehaviour
 
     private void Start()
     {
-        MovingTile.position = Locations[StartingLocation].position;
-        currentLocationIndex = StartingLocation -1;  // this is stupid, but it prevents duplicate code
-        targetLocationIndex = StartingLocation;
-        UpdatePlatformTargets();
+        ResetToDefaultPosition();
     }
 
     /// <summary>
@@ -92,5 +89,21 @@ public class PlatformMover : MonoBehaviour
                 }
             }
         }
+    }
+
+    /// <summary>
+    /// Resets the platform to it's default position.
+    /// </summary>
+    public void ResetToDefaultPosition(bool turnOff = false)
+    {
+        if (turnOff)
+        {
+            IsActive = false;
+        }
+
+        MovingTile.position = Locations[StartingLocation].position;
+        currentLocationIndex = StartingLocation - 1;  // this is stupid, but it prevents duplicate code
+        targetLocationIndex = StartingLocation;
+        UpdatePlatformTargets();
     }
 }

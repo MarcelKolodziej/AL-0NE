@@ -7,6 +7,9 @@ public class RisingWater : MonoBehaviour
     [Header("Objects To Assign")]
     [SerializeField] private Transform StartingPoint;
     [SerializeField] private Transform EndingPoint;
+    [Space]
+    [SerializeField] private PlatformMover PlatformMover;
+    [SerializeField] private PlatformSequencer PlatformSequencer;
 
     [Header("Public Fields")]
     [SerializeField] private float RisingSpeed = 1f;
@@ -27,8 +30,10 @@ public class RisingWater : MonoBehaviour
 
     public void ResetRisingWater()
     {
-        transform.position = StartingPoint.position;
         IsActive = false;
+        PlatformMover.ResetToDefaultPosition(true);
+        PlatformSequencer.ForceStop(true);
+        transform.position = StartingPoint.position;
     }
     
     private void Update()

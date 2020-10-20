@@ -7246,6 +7246,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StartingPoint: {fileID: 394915867}
   EndingPoint: {fileID: 895174305}
+  PlatformMover: {fileID: 325874578}
+  PlatformSequencer: {fileID: 2133019422}
   RisingSpeed: 2.5
   IsActive: 0
 --- !u!66 &787289311
