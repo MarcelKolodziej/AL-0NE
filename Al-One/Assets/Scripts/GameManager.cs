@@ -19,9 +19,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    [SerializeField] private GameObject PlayerPrefab;
-    [SerializeField] private GameObject CameraPrefab;
-
     private PlayerControls playerControls;
     private Transform spawnPoint;
     private CinemachineVirtualCamera cmvCamera;
@@ -49,10 +46,10 @@ public class GameManager : MonoBehaviour
         // Populate references
         SetSpawnPoint(GameObject.FindGameObjectWithTag("Respawn"));
 
-        gameObject = GameObject.Instantiate(PlayerPrefab);
+        gameObject = GameObject.FindGameObjectWithTag("Player");
         playerControls = gameObject.GetComponent<PlayerControls>();
 
-        gameObject = GameObject.Instantiate(CameraPrefab);
+        gameObject = GameObject.FindGameObjectWithTag("CMVirtualCam");
         cmvCamera = gameObject.GetComponentInChildren<CinemachineVirtualCamera>();
         cmvCamera.Follow = playerControls.transform;
 
