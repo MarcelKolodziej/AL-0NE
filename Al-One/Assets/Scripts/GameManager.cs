@@ -65,4 +65,14 @@ public class GameManager : Singleton<GameManager>
     {
         RespawnPlayer();
     }
+
+    public void SetPlayerPosition(Vector3 position)
+    {
+        playerControls.transform.position = position;
+    }
+
+    public Vector3 GetPlayerPosition()
+    {
+        return playerControls.transform.position;
+    }
 }
