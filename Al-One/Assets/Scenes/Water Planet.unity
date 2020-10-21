@@ -210,7 +210,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1714531405034186067, guid: dee6fd11f9943eb459f0986b02dee538, type: 3}
       propertyPath: jetPackForce
-      value: 50
+      value: 40.34
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dee6fd11f9943eb459f0986b02dee538, type: 3}

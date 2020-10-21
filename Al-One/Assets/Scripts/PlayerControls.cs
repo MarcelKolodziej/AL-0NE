@@ -53,15 +53,15 @@ public class PlayerControls : MonoBehaviour
         {
             myRigidBody.AddForce(new Vector2(0, jetPackForce));
             Debug.Log("Jet pack working");
-            myAnimator.SetBool("Idle", true);
         }    
     }
 
     private void Run()
     {
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        Vector2 playerVelocity = new Vector2(moveHorizontal * m_speed, myRigidBody.velocity.y);
-        myRigidBody.velocity = playerVelocity;
+            float moveHorizontal = Input.GetAxis("Horizontal");
+            Vector2 playerVelocity = new Vector2(moveHorizontal * m_speed, myRigidBody.velocity.y);
+            myRigidBody.velocity = playerVelocity;
+        
     }
 
     private void Jump()
