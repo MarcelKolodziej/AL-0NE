@@ -21,7 +21,8 @@ public class GameManager : MonoBehaviour
 
     private PlayerControls playerControls;
     private Transform spawnPoint;
-    private CinemachineVirtualCamera cmvCamera;
+    public bool MainMenuClosed = false;
+
 
     private void Awake()
     {
@@ -50,11 +51,14 @@ public class GameManager : MonoBehaviour
         playerControls = gameObject.GetComponent<PlayerControls>();
 
         gameObject = GameObject.FindGameObjectWithTag("CMVirtualCam");
-        cmvCamera = gameObject.GetComponentInChildren<CinemachineVirtualCamera>();
-        cmvCamera.Follow = playerControls.transform;
 
         // Setup Game Scene
         RespawnPlayer();
+    }
+
+    public void LoadLevel(string levelName)
+    {
+        SceneManager.LoadScene(levelName, LoadSceneMode.Single);
     }
 
     public void SetSpawnPoint(GameObject SpawnPoint)
@@ -64,9 +68,8 @@ public class GameManager : MonoBehaviour
     public void RespawnPlayer()
     {
         playerControls.transform.position = spawnPoint.transform.position;
-        cmvCamera.transform.position = spawnPoint.transform.position;
     }
-    public void DamangePlayer()
+    public void DamangePlayer() 
     {
         TriggerPlayerDeath();
     }
