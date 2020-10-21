@@ -4,20 +4,13 @@ using UnityEngine;
 
 public class LevelSelection : MonoBehaviour
 {
-    public void OnWaterWorldPressed()
-    {
-        /// GameManager.Instance.LoadLevel("");
-        Debug.LogError("Please Assign Level");
-    }
+    [SerializeField] private HUDController HUDController;
 
-    public void OnLavaWorldPressed()
-    {
-        GameManager.Instance.LoadLevel("LavaPlanet");
-    }
 
-    public void OnTreeWorldPressed()
+    public void OnLevelSelectionPressed(int sceneIndex)
     {
-        GameManager.Instance.LoadLevel("Tree Planet");
+        HUDController.TransitionToScene(sceneIndex);
+        gameObject.SetActive(false);
     }
 
     public void OpenLevelSelection()
