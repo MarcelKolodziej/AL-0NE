@@ -7,31 +7,19 @@ using Cinemachine;
 /// <summary>
 /// Game Manager Singleton, use this for keeping track of player progress, loading levels, health, respawning the player
 /// </summary>
-public class GameManager : MonoBehaviour
+public class GameManager : Singleton<GameManager>
 {
-    private static GameManager gameManager = null;
-
-    public static GameManager Instance
-    {
-        get
-        {
-            return gameManager;
-        }
-    }
-
     private PlayerControls playerControls;
     private Transform spawnPoint;
-    private CinemachineVirtualCamera cmvCamera;
+    public bool MainMenuClosed = false;
+
+    // for crystals collected
+    public bool BlueCrystalPickedUp = false;
+    public bool RedCrystalPickedUp = false;
+    public bool GreenCrystalPickedUp = false;
 
     private void Awake()
     {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(this.gameObject);
-        }
-
-        gameManager = this;
-        DontDestroyOnLoad(gameObject);
         SceneManager.sceneLoaded += OnLevelFinishedLoading;
     }
     private void OnDestroy()
@@ -50,11 +38,14 @@ public class GameManager : MonoBehaviour
         playerControls = gameObject.GetComponent<PlayerControls>();
 
         gameObject = GameObject.FindGameObjectWithTag("CMVirtualCam");
-        cmvCamera = gameObject.GetComponentInChildren<CinemachineVirtualCamera>();
-        cmvCamera.Follow = playerControls.transform;
 
         // Setup Game Scene
         RespawnPlayer();
+    }
+
+    public void LoadLevel(string levelName)
+    {
+        SceneManager.LoadScene(levelName, LoadSceneMode.Single);
     }
 
     public void SetSpawnPoint(GameObject SpawnPoint)
@@ -64,9 +55,8 @@ public class GameManager : MonoBehaviour
     public void RespawnPlayer()
     {
         playerControls.transform.position = spawnPoint.transform.position;
-        cmvCamera.transform.position = spawnPoint.transform.position;
     }
-    public void DamangePlayer()
+    public void DamangePlayer() 
     {
         TriggerPlayerDeath();
     }
