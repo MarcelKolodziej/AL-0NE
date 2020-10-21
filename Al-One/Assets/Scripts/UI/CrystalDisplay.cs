@@ -13,7 +13,7 @@ public class CrystalDisplay : MonoBehaviour
         UpdateCrystalDisplay();
     }
 
-    public void UpdateCrystalDisplay()
+    public virtual void UpdateCrystalDisplay()
     {
         BlueCrystal.SetActive(GameManager.Instance.BlueCrystalPickedUp);
         GreenCrystal.SetActive(GameManager.Instance.GreenCrystalPickedUp);
