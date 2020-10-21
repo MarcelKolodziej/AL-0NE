@@ -13,8 +13,12 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] float jumpSpeed = 10f;
     [SerializeField] float m_verticalSpeed = 10f;
     float gravityScaleAtStart;
-    // State 
-    //bool isAlive = true
+
+
+    //Jet-Pack
+    [SerializeField] private float jetPackForce = 3f;
+    private bool isFlying = false;
+    private ParticleSystem.EmissionModule em;
 
     // Cached component references
     Rigidbody2D myRigidBody;
@@ -28,7 +32,6 @@ public class PlayerControls : MonoBehaviour
         myAnimator = GetComponent<Animator>();
         myCollider = GetComponent<BoxCollider2D>();
         gravityScaleAtStart = myRigidBody.gravityScale;
-
     }
 
     void Update()
@@ -38,6 +41,22 @@ public class PlayerControls : MonoBehaviour
         Jump();
         Flip();
     }
+
+    void FixedUpdate()
+    {
+        JetPackFly();
+    }
+
+    private void JetPackFly()
+    { 
+          if (Input.GetKey(KeyCode.F))
+        {
+            myRigidBody.AddForce(new Vector2(0, jetPackForce));
+            Debug.Log("Jet pack working");
+            myAnimator.SetBool("Idle", true);
+        }    
+    }
+
     private void Run()
     {
         float moveHorizontal = Input.GetAxis("Horizontal");
