@@ -1,4 +1,5 @@
-﻿using JetBrains.Annotations;
+﻿using Cinemachine;
+using JetBrains.Annotations;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -30,12 +31,17 @@ public class PlayerControls : MonoBehaviour
     CapsuleCollider2D myCollider;
     [SerializeField] private ParticleSystem BloodParticles;
     [SerializeField] private LayerMask platformLayerMask;
+    private GameObject myCineMachineCamera;
+    private CinemachineStateDrivenCamera CinemachineStateDrivenCamera;
+
     // Message then methods
     void Start()
     {
         myRigidBody = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
         myCollider = GetComponent<CapsuleCollider2D>();
+        myCineMachineCamera = GameObject.FindGameObjectWithTag("CMVirtualCam");
+        CinemachineStateDrivenCamera = myCineMachineCamera.GetComponent<CinemachineStateDrivenCamera>();
         gravityScaleAtStart = myRigidBody.gravityScale;
     }
 
@@ -168,7 +174,12 @@ public class PlayerControls : MonoBehaviour
 
         if (col.gameObject.tag == "DamageBlock" && coroutine == null)
         {
-            coroutine = PlayerDeathSequence(col);
+            PlayerHasControl = false;
+            myRigidBody.freezeRotation = false;
+            myAnimator.SetBool("Dead", true);
+            BloodParticles.Play();
+            myRigidBody.AddForceAtPosition(GenerateRandomForce(), col.gameObject.transform.position, ForceMode2D.Impulse);
+            coroutine = PlayerDeathSequence();
             StartCoroutine(coroutine);
         }
 
@@ -176,6 +187,18 @@ public class PlayerControls : MonoBehaviour
         {
             myRigidBody.AddForceAtPosition(GenerateRandomForce(), col.gameObject.transform.position, ForceMode2D.Impulse);
             BloodParticles.Play();
+        }
+    }
+
+    public void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.tag == "DamageBlock" && coroutine == null)
+        {
+            PlayerHasControl = false;
+            myRigidBody.freezeRotation = false;
+            myAnimator.SetBool("Dead", true);
+            coroutine = PlayerDeathSequence();
+            StartCoroutine(coroutine);
         }
     }
 
@@ -187,13 +210,8 @@ public class PlayerControls : MonoBehaviour
         }
     }
 
-    private IEnumerator PlayerDeathSequence(Collision2D col)
+    private IEnumerator PlayerDeathSequence()
     {
-        myRigidBody.freezeRotation = false;
-        myRigidBody.AddForceAtPosition(GenerateRandomForce(), col.gameObject.transform.position, ForceMode2D.Impulse);
-        PlayerHasControl = false;
-        myAnimator.SetBool("Dead", true);
-        BloodParticles.Play();
         yield return new WaitForSeconds(1f);
         myAnimator.SetBool("Dead", false);
         PlayerHasControl = true;
@@ -201,7 +219,11 @@ public class PlayerControls : MonoBehaviour
         myRigidBody.freezeRotation = true;
         myRigidBody.velocity = Vector2.zero;
         BloodParticles.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+
+        Vector3 oldPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z);
         GameManager.Instance.TriggerPlayerDeath();
+        CinemachineStateDrivenCamera.PreviousStateIsValid = false;
+        CinemachineStateDrivenCamera.OnTargetObjectWarped(transform, transform.position - oldPosition);
         coroutine = null;
     }
 

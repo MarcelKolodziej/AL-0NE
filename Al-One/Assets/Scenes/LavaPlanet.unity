@@ -1153,7 +1153,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3555503513916610991, guid: 8fdf8167d62156e42b080e90361894ab, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.6047821
+      value: -0.3779812
       objectReference: {fileID: 0}
     - target: {fileID: 3555503513916610991, guid: 8fdf8167d62156e42b080e90361894ab, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1211,9 +1211,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cameras
       objectReference: {fileID: 0}
+    - target: {fileID: 3555503514555877729, guid: 8fdf8167d62156e42b080e90361894ab, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 3555503514569937783, guid: 8fdf8167d62156e42b080e90361894ab, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.507284
+      value: 4.790785
       objectReference: {fileID: 0}
     - target: {fileID: 3555503514569937783, guid: 8fdf8167d62156e42b080e90361894ab, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1231,9 +1235,13 @@ PrefabInstance:
       propertyPath: m_AnimatedTarget
       value: 
       objectReference: {fileID: 554607676}
+    - target: {fileID: 6300471523432816014, guid: 8fdf8167d62156e42b080e90361894ab, type: 3}
+      propertyPath: m_TagString
+      value: CMVirtualCam
+      objectReference: {fileID: 0}
     - target: {fileID: 7013248496811427542, guid: 8fdf8167d62156e42b080e90361894ab, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.6909795
+      value: 4.9177804
       objectReference: {fileID: 0}
     - target: {fileID: 7013248496811427542, guid: 8fdf8167d62156e42b080e90361894ab, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1241,7 +1249,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7013248497122357120, guid: 8fdf8167d62156e42b080e90361894ab, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.6909795
+      value: 4.9177804
       objectReference: {fileID: 0}
     - target: {fileID: 7013248497122357120, guid: 8fdf8167d62156e42b080e90361894ab, type: 3}
       propertyPath: m_LocalPosition.y

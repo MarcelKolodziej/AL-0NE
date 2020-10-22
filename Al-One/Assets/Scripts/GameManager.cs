@@ -37,8 +37,6 @@ public class GameManager : Singleton<GameManager>
         gameObject = GameObject.FindGameObjectWithTag("Player");
         playerControls = gameObject.GetComponent<PlayerControls>();
 
-        gameObject = GameObject.FindGameObjectWithTag("CMVirtualCam");
-
         // Setup Game Scene
         RespawnPlayer();
     }
