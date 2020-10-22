@@ -24,6 +24,7 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] private HUDController HUDController;
 
     //Jet-Pack
+    [SerializeField] private bool JetPackEnabled = false;
     [SerializeField] private float jetPackForce = 3f;
     [SerializeField] private ParticleSystem JetpackParticles;
     [SerializeField] private float JetpackFuel = 1f;
@@ -63,7 +64,7 @@ public class PlayerControls : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (PlayerHasControl)
+        if (PlayerHasControl && JetPackEnabled)
         {
             JetPackFly();
         }
@@ -77,7 +78,6 @@ public class PlayerControls : MonoBehaviour
             myRigidBody.AddForce(new Vector2(0, jetPackForce));
             JetpackFuel -= FuelDecaySpeed;
             HUDController.JetpackFuelDisplay.fillAmount = JetpackFuel;
-            Debug.Log("Jet pack working:" + JetpackFuel);
         }
         else
         {
