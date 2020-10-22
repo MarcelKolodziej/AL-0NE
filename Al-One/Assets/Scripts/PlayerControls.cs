@@ -237,6 +237,7 @@ public class PlayerControls : MonoBehaviour
         myRigidBody.freezeRotation = true;
         myRigidBody.velocity = Vector2.zero;
         BloodParticles.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+        JetpackParticles.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
 
         Vector3 oldPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z);
         GameManager.Instance.TriggerPlayerDeath();
