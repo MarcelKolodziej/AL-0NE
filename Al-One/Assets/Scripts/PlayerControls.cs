@@ -14,6 +14,10 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] float m_verticalSpeed = 10f;
     float gravityScaleAtStart;
 
+    // Death
+    private bool PlayerHasControl = true;
+    [SerializeField] private float ForceModifier = 1f;
+    private IEnumerator coroutine;
 
     //Jet-Pack
     [SerializeField] private float jetPackForce = 3f;
@@ -23,28 +27,35 @@ public class PlayerControls : MonoBehaviour
     // Cached component references
     Rigidbody2D myRigidBody;
     Animator myAnimator;
-    BoxCollider2D myCollider;
+    CapsuleCollider2D myCollider;
+    [SerializeField] private ParticleSystem BloodParticles;
     [SerializeField] private LayerMask platformLayerMask;
     // Message then methods
     void Start()
     {
         myRigidBody = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
-        myCollider = GetComponent<BoxCollider2D>();
+        myCollider = GetComponent<CapsuleCollider2D>();
         gravityScaleAtStart = myRigidBody.gravityScale;
     }
 
     void Update()
     {
-        Run();
-        ClimbLadder();
-        Jump();
-        Flip();
+        if (PlayerHasControl)
+        {
+            Run();
+            ClimbLadder();
+            Jump();
+            Flip();
+        }
     }
 
     void FixedUpdate()
     {
-        JetPackFly();
+        if (PlayerHasControl)
+        {
+            JetPackFly();
+        }
     }
 
     private void JetPackFly()
@@ -124,7 +135,7 @@ public class PlayerControls : MonoBehaviour
         if (!myCollider.IsTouchingLayers(LayerMask.GetMask("Ladder")) || (IsGrounded() && moveVertical == 0f))
         {
             myAnimator.SetBool("Climbing", false);
-          //  myAnimator.SetBool("Climbing_Idle", false);
+            myAnimator.SetBool("Climbing_Idle", false);
             myRigidBody.gravityScale = gravityScaleAtStart;
             return;
         }
@@ -137,12 +148,12 @@ public class PlayerControls : MonoBehaviour
         if (playerHasVerticalSpeed)
         {
             myAnimator.SetBool("Climbing", true);
-         //   myAnimator.SetBool("Climbing_Idle", false);
+            myAnimator.SetBool("Climbing_Idle", false);
         }
         else
         {
             myAnimator.SetBool("Climbing", true);
-         //   myAnimator.SetBool("Climbing_Idle", true);
+            myAnimator.SetBool("Climbing_Idle", true);
         }
 
         myRigidBody.gravityScale = 0f;
@@ -154,6 +165,18 @@ public class PlayerControls : MonoBehaviour
         {
             this.transform.parent = col.transform;
         }
+
+        if (col.gameObject.tag == "DamageBlock" && coroutine == null)
+        {
+            coroutine = PlayerDeathSequence(col);
+            StartCoroutine(coroutine);
+        }
+
+        if (coroutine != null)
+        {
+            myRigidBody.AddForceAtPosition(GenerateRandomForce(), col.gameObject.transform.position, ForceMode2D.Impulse);
+            BloodParticles.Play();
+        }
     }
 
     void OnCollisionExit2D(Collision2D col)
@@ -162,5 +185,28 @@ public class PlayerControls : MonoBehaviour
         {
             this.transform.parent = null;
         }
+    }
+
+    private IEnumerator PlayerDeathSequence(Collision2D col)
+    {
+        myRigidBody.freezeRotation = false;
+        myRigidBody.AddForceAtPosition(GenerateRandomForce(), col.gameObject.transform.position, ForceMode2D.Impulse);
+        PlayerHasControl = false;
+        myAnimator.SetBool("Dead", true);
+        BloodParticles.Play();
+        yield return new WaitForSeconds(1f);
+        myAnimator.SetBool("Dead", false);
+        PlayerHasControl = true;
+        transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+        myRigidBody.freezeRotation = true;
+        myRigidBody.velocity = Vector2.zero;
+        BloodParticles.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+        GameManager.Instance.TriggerPlayerDeath();
+        coroutine = null;
+    }
+
+    private Vector2 GenerateRandomForce()
+    {
+        return new Vector2(UnityEngine.Random.Range(-ForceModifier, ForceModifier), UnityEngine.Random.Range(-ForceModifier, ForceModifier));
     }
 }
