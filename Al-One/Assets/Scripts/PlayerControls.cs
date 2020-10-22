@@ -23,7 +23,7 @@ public class PlayerControls : MonoBehaviour
     //Jet-Pack
     [SerializeField] private float jetPackForce = 3f;
     private bool isFlying = false;
-    private ParticleSystem.EmissionModule em;
+    [SerializeField] private ParticleSystem.EmissionModule em;
 
     // Cached component references
     Rigidbody2D myRigidBody;
