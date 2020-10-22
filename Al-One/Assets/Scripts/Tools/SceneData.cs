@@ -9,7 +9,8 @@ public class SceneData
         HubPlanet,
         LavaPlanet,
         TreePlanet,
-        WaterPlanet
+        WaterPlanet,
+        HomePlanet,
     }
 
     public static string GetSceneStringFromEnum(Scene scene)
@@ -25,6 +26,8 @@ public class SceneData
             case Scene.WaterPlanet:
                 Debug.LogError("Please Assign Level");
                 return "HubWorld";
+            case Scene.HomePlanet:
+                return "HomeWorld";
         }
 
         return "HubWorld";
