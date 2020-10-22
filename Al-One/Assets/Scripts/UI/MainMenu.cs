@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MainMenu : MonoBehaviour
 {
+    public GameObject CreditsObject;
+
     public void OnStartButtonPressed()
     {
         CloseMenu();
@@ -11,7 +13,12 @@ public class MainMenu : MonoBehaviour
 
     public void OnCreditsButtonPressed()
     {
-        // Show Credits Here
+        CreditsObject.SetActive(true);
+    }
+
+    public void OnCloseCreditsButtonPressed()
+    {
+        CreditsObject.SetActive(false);
     }
 
     public void OnExitButtonPressed()
