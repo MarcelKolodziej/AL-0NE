@@ -20,10 +20,15 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] private float ForceModifier = 1f;
     private IEnumerator coroutine;
 
+    //UI
+    [SerializeField] private HUDController HUDController;
+
     //Jet-Pack
     [SerializeField] private float jetPackForce = 3f;
+    [SerializeField] private ParticleSystem JetpackParticles;
+    [SerializeField] private float JetpackFuel = 1f;
+    [SerializeField] private float FuelDecaySpeed = 0.0f;
     private bool isFlying = false;
-    [SerializeField] private ParticleSystem.EmissionModule em;
 
     // Cached component references
     Rigidbody2D myRigidBody;
@@ -65,12 +70,25 @@ public class PlayerControls : MonoBehaviour
     }
 
     private void JetPackFly()
-    { 
-          if (Input.GetKey(KeyCode.F))
+    {
+        if (Input.GetKey(KeyCode.F) && JetpackFuel > 0)
         {
+            JetpackParticles.Play();
             myRigidBody.AddForce(new Vector2(0, jetPackForce));
-            Debug.Log("Jet pack working");
-        }    
+            JetpackFuel -= FuelDecaySpeed;
+            HUDController.JetpackFuelDisplay.fillAmount = JetpackFuel;
+            Debug.Log("Jet pack working:" + JetpackFuel);
+        }
+        else
+        {
+            JetpackParticles.Stop();
+        }
+
+        if (IsGrounded())
+        {
+            JetpackFuel = 1f;
+            HUDController.JetpackFuelDisplay.fillAmount = JetpackFuel;
+        }
     }
 
     private void Run()
@@ -224,6 +242,8 @@ public class PlayerControls : MonoBehaviour
         GameManager.Instance.TriggerPlayerDeath();
         CinemachineStateDrivenCamera.PreviousStateIsValid = false;
         CinemachineStateDrivenCamera.OnTargetObjectWarped(transform, transform.position - oldPosition);
+        JetpackFuel = 1f;
+        HUDController.JetpackFuelDisplay.fillAmount = JetpackFuel;
         coroutine = null;
     }
 
