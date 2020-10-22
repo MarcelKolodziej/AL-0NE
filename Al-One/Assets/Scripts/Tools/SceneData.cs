@@ -24,8 +24,7 @@ public class SceneData
             case Scene.TreePlanet:
                 return "Tree Planet";
             case Scene.WaterPlanet:
-                Debug.LogError("Please Assign Level");
-                return "HubWorld";
+                return "Water Planet";
             case Scene.HomePlanet:
                 return "HomeWorld";
         }
