@@ -64,7 +64,6 @@ public class MainMenu : MonoBehaviour
         MainMenuObject.SetActive(true);
         CreditsObject.SetActive(false);
         SettingsObject.SetActive(false);
-        GameManager.Instance.MainMenuClosed = false;
     }
 
     private void CloseMenu()

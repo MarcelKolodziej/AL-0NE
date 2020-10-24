@@ -21,7 +21,7 @@ public class HUDController : MonoBehaviour
 
     private void OnEnable()
     {
-        MainMenu.SetActive(DisplayMainMenuOnEnable);
+        MainMenu.SetActive(DisplayMainMenuOnEnable && GameManager.Instance.MainMenuClosed == false);
         CrystalHUD.SetActive(TurnOnCrystalHUD);
         JetPackFlueDisplayParent.SetActive(ShowJetPackDisplay);
     }
