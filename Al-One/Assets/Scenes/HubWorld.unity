@@ -1184,6 +1184,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Menu: {fileID: 206923787}
+  IsMainMenu: 0
 --- !u!61 &468754784
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7612,6 +7613,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Menu: {fileID: 1559002268}
+  IsMainMenu: 0
 --- !u!61 &1188729541
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8395,7 +8397,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1356910466
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8409,6 +8411,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Menu: {fileID: 1293095428704169789}
+  IsMainMenu: 1
 --- !u!61 &1356910467
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8554,6 +8557,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Menu: {fileID: 442859942}
+  IsMainMenu: 0
 --- !u!1 &1533679179
 GameObject:
   m_ObjectHideFlags: 0
