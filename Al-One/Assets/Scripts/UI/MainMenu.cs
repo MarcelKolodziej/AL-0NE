@@ -61,7 +61,6 @@ public class MainMenu : MonoBehaviour
 
     public void OpenMenu()
     {
-        gameObject.SetActive(true);
         MainMenuObject.SetActive(true);
         CreditsObject.SetActive(false);
         SettingsObject.SetActive(false);
@@ -71,8 +70,9 @@ public class MainMenu : MonoBehaviour
     private void CloseMenu()
     {
         GameManager.Instance.MainMenuClosed = true;
+        MainMenuObject.SetActive(false);
         CreditsObject.SetActive(false);
-        gameObject.SetActive(false);
+        SettingsObject.SetActive(false);
     }
 
     private void OnEnable()
