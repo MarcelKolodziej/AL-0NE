@@ -67,11 +67,17 @@ public class SoundPlayer : MonoBehaviour
 
     public void PlayJetpackSound()
     {
-        JetpackAudioSource.Play();
+        Debug.LogError("Play");
+
+        if (!JetpackAudioSource.isPlaying)
+        {
+            JetpackAudioSource.Play();
+        }
     }
 
     public void StopJetpackSound()
     {
+        Debug.LogError("Stop");
         JetpackAudioSource.Stop();
     }
 
