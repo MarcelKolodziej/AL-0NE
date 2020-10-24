@@ -6571,11 +6571,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3555503513916610991, guid: 8fdf8167d62156e42b080e90361894ab, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.6256782
+      value: -0.49999976
       objectReference: {fileID: 0}
     - target: {fileID: 3555503513916610991, guid: 8fdf8167d62156e42b080e90361894ab, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.5898256
+      value: 1.5898261
       objectReference: {fileID: 0}
     - target: {fileID: 3555503513916610991, guid: 8fdf8167d62156e42b080e90361894ab, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6635,7 +6635,7 @@ PrefabInstance:
       objectReference: {fileID: 324984849}
     - target: {fileID: 3555503514569937783, guid: 8fdf8167d62156e42b080e90361894ab, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.513664
+      value: 4.349451
       objectReference: {fileID: 0}
     - target: {fileID: 3555503514569937783, guid: 8fdf8167d62156e42b080e90361894ab, type: 3}
       propertyPath: m_LocalPosition.y
@@ -6659,7 +6659,7 @@ PrefabInstance:
       objectReference: {fileID: 324984849}
     - target: {fileID: 7013248496811427542, guid: 8fdf8167d62156e42b080e90361894ab, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.6700835
+      value: 4.5387135
       objectReference: {fileID: 0}
     - target: {fileID: 7013248496811427542, guid: 8fdf8167d62156e42b080e90361894ab, type: 3}
       propertyPath: m_LocalPosition.y
@@ -6667,7 +6667,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7013248497122357120, guid: 8fdf8167d62156e42b080e90361894ab, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.6700835
+      value: 4.5387135
       objectReference: {fileID: 0}
     - target: {fileID: 7013248497122357120, guid: 8fdf8167d62156e42b080e90361894ab, type: 3}
       propertyPath: m_LocalPosition.y
@@ -6860,8 +6860,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2109946081}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: OnCloseCreditsButtonPressed
+        m_TargetAssemblyTypeName: EndingSlideCloseButton, Assembly-CSharp
+        m_MethodName: OnCloseButtonPressed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8244,7 +8244,7 @@ GameObject:
   - component: {fileID: 2109946082}
   - component: {fileID: 2109946081}
   m_Layer: 5
-  m_Name: Main Menu Canvas (1)
+  m_Name: Ending Slide Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8259,10 +8259,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 2109946080}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 560151bba0322c54fa33452cb2c7c80d, type: 3}
+  m_Script: {fileID: 11500000, guid: 14aef5e80d235e94ea087ab42435cc26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CreditsObject: {fileID: 1096448462}
 --- !u!114 &2109946082
 MonoBehaviour:
   m_ObjectHideFlags: 0
