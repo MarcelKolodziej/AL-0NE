@@ -27,6 +27,7 @@ public class SoundPlayer : MonoBehaviour
     [SerializeField] private AudioClip SpikeDeath;
     [SerializeField] private AudioClip LavaDeath;
     [SerializeField] private AudioClip FallingDeath;
+    [SerializeField] private AudioClip AcidDeath;
     [SerializeField] private AudioClip Bouncing;
 
     private void Awake()
@@ -162,5 +163,12 @@ public class SoundPlayer : MonoBehaviour
             SFXAudioSource.clip = FallingDeath;
             SFXAudioSource.Play();
         }
+    }
+
+    public void PlayAcidDeathSFX()
+    {
+        SFXAudioSource.volume = 1f;
+        SFXAudioSource.clip = AcidDeath;
+        SFXAudioSource.Play();
     }
 }

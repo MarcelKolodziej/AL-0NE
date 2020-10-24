@@ -12,6 +12,7 @@ public class PlaySFXOnCollision : MonoBehaviour
         Falling_Death,
         RockFall,
         LeafFall,
+        AcidDeath,
     }
 
     [SerializeField] private SFX SFXToPlay;
@@ -43,6 +44,9 @@ public class PlaySFXOnCollision : MonoBehaviour
                 break;
             case SFX.LeafFall:
                 soundPlayer.PlayLeafFallSFX();
+                break;
+            case SFX.AcidDeath:
+                soundPlayer.PlayAcidDeathSFX();
                 break;
         }
     }
