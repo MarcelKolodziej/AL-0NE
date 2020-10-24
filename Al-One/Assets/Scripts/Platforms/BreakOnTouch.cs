@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BreakOnTouch : MonoBehaviour
+public class BreakOnTouch : PlaySFXOnCollision
 {
     [Header("Objects To Assign")]
     [SerializeField] private Rigidbody2D ObjectRigidbody;
@@ -33,9 +33,9 @@ public class BreakOnTouch : MonoBehaviour
 
     /// <summary>
     /// Detect Collion with player character and start break block timer
-    /// </summary>
+    /// </summary>S
     /// <param name="collision"></param>
-    private void OnCollisionEnter2D(Collision2D collision)
+    public override void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Player" && !blockHasFallen)
         {
@@ -43,6 +43,7 @@ public class BreakOnTouch : MonoBehaviour
             ObjectRigidbody.bodyType = RigidbodyType2D.Dynamic;
             ObjectRigidbody.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
             ObjectRigidbody.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
+            PlaySFX();
 
             if (AutomaticReset)
             {
