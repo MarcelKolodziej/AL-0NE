@@ -67,8 +67,6 @@ public class SoundPlayer : MonoBehaviour
 
     public void PlayJetpackSound()
     {
-        Debug.LogError("Play");
-
         if (!JetpackAudioSource.isPlaying)
         {
             JetpackAudioSource.Play();
@@ -77,7 +75,6 @@ public class SoundPlayer : MonoBehaviour
 
     public void StopJetpackSound()
     {
-        Debug.LogError("Stop");
         JetpackAudioSource.Stop();
     }
 
