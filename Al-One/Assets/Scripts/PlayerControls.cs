@@ -24,11 +24,17 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] private HUDController HUDController;
 
     //Jet-Pack
+    [SerializeField] private ParticleSystem JetpackParticles;
+    private ParticleSystem.ShapeModule JetpackParticleShape;
+    [Space]
     [SerializeField] private bool JetPackEnabled = false;
     [SerializeField] private float jetPackForce = 3f;
-    [SerializeField] private ParticleSystem JetpackParticles;
     [SerializeField] private float JetpackFuel = 1f;
     [SerializeField] private float FuelDecaySpeed = 0.0f;
+    [Space]
+    [SerializeField] private Vector3 ParticleLeftVector;
+    [SerializeField] private Vector3 ParticleDownVector;
+    [SerializeField] private Vector3 ParticleRightVector;
     private bool isFlying = false;
 
     // Cached component references
@@ -49,6 +55,7 @@ public class PlayerControls : MonoBehaviour
         myCineMachineCamera = GameObject.FindGameObjectWithTag("CMVirtualCam");
         CinemachineStateDrivenCamera = myCineMachineCamera.GetComponent<CinemachineStateDrivenCamera>();
         gravityScaleAtStart = myRigidBody.gravityScale;
+        JetpackParticleShape = JetpackParticles.shape;
     }
 
     void Update()
@@ -75,6 +82,21 @@ public class PlayerControls : MonoBehaviour
         if (Input.GetKey(KeyCode.F) && JetpackFuel > 0)
         {
             JetpackParticles.Play();
+            float moveHorizontal = Input.GetAxis("Horizontal");
+
+            if (moveHorizontal < 0)
+            {
+                JetpackParticleShape.rotation = ParticleRightVector;
+            }
+            else if (moveHorizontal > 0) 
+            {
+                JetpackParticleShape.rotation = ParticleLeftVector;
+            }
+            else
+            {
+                JetpackParticleShape.rotation = ParticleDownVector;
+            }
+
             myRigidBody.AddForce(new Vector2(0, jetPackForce));
             JetpackFuel -= FuelDecaySpeed;
             HUDController.JetpackFuelDisplay.fillAmount = JetpackFuel;
