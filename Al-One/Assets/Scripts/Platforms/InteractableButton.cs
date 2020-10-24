@@ -9,9 +9,9 @@ public class InteractableButton : MonoBehaviour
     [SerializeField] private Animator ButtonAnimator;
     private bool pressed = false;
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (!pressed && collision.gameObject.tag == "Player")
+        if (!pressed && collider.gameObject.tag == "Player")
         {
             Door.PlayOneShot();
             ButtonAnimator.SetBool("SwitchFlipped", true);
