@@ -17,12 +17,10 @@ public class LevelSelection : MonoBehaviour
     public void OpenLevelSelection()
     {
         gameObject.SetActive(true);
-        GameManager.Instance.MainMenuClosed = false;
     }
 
     public void CloseLevelSelection()
     {
-        GameManager.Instance.MainMenuClosed = true;
         gameObject.SetActive(false);
     }
 

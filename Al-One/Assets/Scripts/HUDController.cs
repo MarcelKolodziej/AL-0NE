@@ -9,8 +9,8 @@ public class HUDController : MonoBehaviour
     [Header("References To Assign")]
     [SerializeField] private GameObject MainMenu;
     [SerializeField] private GameObject CrystalHUD;
-    [SerializeField] private Animator SceenTranstionAnimator;
     [SerializeField] private GameObject JetPackFlueDisplayParent;
+    [SerializeField] private Animator SceenTranstionAnimator;
     public Image JetpackFuelDisplay;
 
     [Header("Settings")]
@@ -29,6 +29,11 @@ public class HUDController : MonoBehaviour
     public void OnOpenMainMenuPressed()
     {
         MainMenu.SetActive(true);
+    }
+
+    public void SetJetpackGUIOn()
+    {
+        JetPackFlueDisplayParent.SetActive(true);
     }
 
     public void TransitionToScene(SceneData.Scene scene)

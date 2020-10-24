@@ -77,7 +77,10 @@ public class MainMenu : MonoBehaviour
 
     private void OnEnable()
     {
-        OpenMenu();
+        if (GameManager.Instance.MainMenuClosed == false)
+        {
+            OpenMenu();
+        }
     }
 
     private void OnDisable()

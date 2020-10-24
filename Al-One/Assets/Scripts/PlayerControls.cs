@@ -38,7 +38,6 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] private Vector3 ParticleLeftVector;
     [SerializeField] private Vector3 ParticleDownVector;
     [SerializeField] private Vector3 ParticleRightVector;
-    private bool isFlying = false;
 
     // Cached component references
     Rigidbody2D myRigidBody;
@@ -48,6 +47,11 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] private LayerMask platformLayerMask;
     private GameObject myCineMachineCamera;
     private CinemachineStateDrivenCamera CinemachineStateDrivenCamera;
+
+    //Easter Egg
+    private int keyIndex;
+    private KeyCode[] konamicode = new KeyCode[] {KeyCode.UpArrow, KeyCode.UpArrow, KeyCode.DownArrow, KeyCode.DownArrow,
+    KeyCode.LeftArrow, KeyCode.RightArrow, KeyCode.LeftArrow, KeyCode.RightArrow, KeyCode.B, KeyCode.A};
 
     // Message then methods
     void Start()
@@ -69,6 +73,33 @@ public class PlayerControls : MonoBehaviour
             ClimbLadder();
             Jump();
             Flip();
+        }
+
+        KonamiCode();
+    }
+
+    /// <summary>
+    /// My own little easter egg to activate the jetpack using the KonamiCode
+    /// </summary>
+    private void KonamiCode()
+    {
+        if (Input.anyKeyDown)
+        {
+            if (Input.GetKeyDown(konamicode[keyIndex]))
+            {
+                keyIndex++;
+            }
+            else
+            {
+                keyIndex = 0;
+            }
+
+            if (keyIndex == konamicode.Length)
+            {
+                keyIndex = 0;
+                HUDController.SetJetpackGUIOn();
+                JetPackEnabled = true;
+            }
         }
     }
 
