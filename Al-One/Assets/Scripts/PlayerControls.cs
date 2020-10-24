@@ -44,6 +44,8 @@ public class PlayerControls : MonoBehaviour
     Animator myAnimator;
     CapsuleCollider2D myCollider;
     [SerializeField] private ParticleSystem BloodParticles;
+    [SerializeField] private ParticleSystem FireParticles;
+    [SerializeField] private ParticleSystem AcidParticles;
     [SerializeField] private LayerMask platformLayerMask;
     private GameObject myCineMachineCamera;
     private CinemachineStateDrivenCamera CinemachineStateDrivenCamera;
@@ -278,7 +280,7 @@ public class PlayerControls : MonoBehaviour
             PlayerHasControl = false;
             myRigidBody.freezeRotation = false;
             myAnimator.SetBool("Dead", true);
-            BloodParticles.Play();
+            SelectParticles(col.gameObject.name);
             myRigidBody.AddForceAtPosition(GenerateRandomForce(), col.gameObject.transform.position, ForceMode2D.Impulse);
             coroutine = PlayerDeathSequence();
             StartCoroutine(coroutine);
@@ -287,7 +289,7 @@ public class PlayerControls : MonoBehaviour
         if (coroutine != null)
         {
             myRigidBody.AddForceAtPosition(GenerateRandomForce(), col.gameObject.transform.position, ForceMode2D.Impulse);
-            BloodParticles.Play();
+            SelectParticles(col.gameObject.name);
         }
     }
 
@@ -303,6 +305,25 @@ public class PlayerControls : MonoBehaviour
         }
     }
 
+    public void SelectParticles(string collisionObjectName)
+    {
+        switch (collisionObjectName)
+        {
+            case "Foreground Damage Lava":
+                FireParticles.Play();
+            break;
+
+            case "Foreground Damage Acid":
+                AcidParticles.Play();
+                break;
+            
+            case "Foreground Damage Spikes":
+            default:
+                BloodParticles.Play();
+                break;
+        }
+    }
+
     void OnCollisionExit2D(Collision2D col)
     {
         if (col.gameObject.name.Equals("Platform"))
@@ -313,7 +334,7 @@ public class PlayerControls : MonoBehaviour
 
     private IEnumerator PlayerDeathSequence()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.5f);
 
         // Clean Up and Reset Code
         myAnimator.SetBool("Dead", false);
@@ -323,6 +344,8 @@ public class PlayerControls : MonoBehaviour
         myRigidBody.velocity = Vector2.zero;
 
         BloodParticles.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+        FireParticles.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+        AcidParticles.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
         JetpackParticles.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
         SoundPlayer.StopJetpackSound();
 
