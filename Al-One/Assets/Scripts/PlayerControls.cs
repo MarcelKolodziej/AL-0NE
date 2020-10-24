@@ -85,6 +85,7 @@ public class PlayerControls : MonoBehaviour
         if (Input.GetKey(KeyCode.F) && JetpackFuel > 0)
         {
             JetpackParticles.Play();
+            SoundPlayer.PlayJetpackSound();
             float moveHorizontal = Input.GetAxis("Horizontal");
 
             if (moveHorizontal < 0)
@@ -106,6 +107,7 @@ public class PlayerControls : MonoBehaviour
         }
         else
         {
+            SoundPlayer.StopJetpackSound();
             JetpackParticles.Stop();
         }
 
@@ -128,6 +130,7 @@ public class PlayerControls : MonoBehaviour
     {
         if (IsGrounded() && Input.GetButtonDown("Jump"))
         {
+            SoundPlayer.PlayJumpingSFX();
             Vector2 jumpVelocityToAdd = new Vector2(0f, jumpSpeed);
             myRigidBody.velocity += jumpVelocityToAdd;
         }
@@ -256,13 +259,17 @@ public class PlayerControls : MonoBehaviour
     private IEnumerator PlayerDeathSequence()
     {
         yield return new WaitForSeconds(1f);
+
+        // Clean Up and Reset Code
         myAnimator.SetBool("Dead", false);
         PlayerHasControl = true;
         transform.rotation = Quaternion.Euler(0f, 0f, 0f);
         myRigidBody.freezeRotation = true;
         myRigidBody.velocity = Vector2.zero;
+
         BloodParticles.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
         JetpackParticles.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+        SoundPlayer.StopJetpackSound();
 
         Vector3 oldPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z);
         GameManager.Instance.TriggerPlayerDeath();

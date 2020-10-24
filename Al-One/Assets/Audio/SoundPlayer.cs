@@ -20,10 +20,11 @@ public class SoundPlayer : MonoBehaviour
     [SerializeField] private AudioClip WaterPlanetTheme;
     [SerializeField] private AudioClip HomePlanetTheme;
 
-    [Header("Death SFX Clips")]
+    [Header("SFX Clips")]
     [SerializeField] private AudioClip SpikeDeath;
     [SerializeField] private AudioClip LavaDeath;
     [SerializeField] private AudioClip FallingDeath;
+    [SerializeField] private AudioClip Bouncing;
 
     private void Awake()
     {
@@ -82,6 +83,13 @@ public class SoundPlayer : MonoBehaviour
     public void PlayJumpingSFX()
     {
         JumpingAudioSource.Play();
+    }
+
+    public void PlayBounceSFX()
+    {
+        SFXAudioSource.volume = 1f;
+        SFXAudioSource.clip = Bouncing;
+        SFXAudioSource.Play();
     }
 
     public void PlaySpikeDeathSFX()

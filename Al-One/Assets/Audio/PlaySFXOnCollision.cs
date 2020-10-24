@@ -6,25 +6,35 @@ public class PlaySFXOnCollision : MonoBehaviour
 {
     private enum SFX 
     {
+        Bounce,
         Spike_Death,
         Lava_Death,
         Falling_Death,
     }
 
     [SerializeField] private SFX SFXToPlay;
+    private SoundPlayer soundPlayer;
 
     public void PlaySFX()
     {
+        if (soundPlayer == null)
+        {
+            soundPlayer = GameManager.Instance.GetSoundPlayer();
+        }
+
         switch (SFXToPlay)
         {
+            case SFX.Bounce:
+                soundPlayer.PlayBounceSFX();
+                break;
             case SFX.Spike_Death:
-                GameManager.Instance.GetSoundPlayer().PlaySpikeDeathSFX();
+                soundPlayer.PlaySpikeDeathSFX();
                 break;
             case SFX.Lava_Death:
-                GameManager.Instance.GetSoundPlayer().PlayLavaDeathSFX();
+                soundPlayer.PlayLavaDeathSFX();
                 break;
             case SFX.Falling_Death:
-                GameManager.Instance.GetSoundPlayer().PlayFallingDeathSFX();
+                soundPlayer.PlayFallingDeathSFX();
                 break;
         }
     }

@@ -9919,6 +9919,7 @@ MonoBehaviour:
   SpikeDeath: {fileID: 8300000, guid: c01748674a3a36543ba9b2ca8c8193d9, type: 3}
   LavaDeath: {fileID: 8300000, guid: 3cf939eb5779eb947b824b90a036679c, type: 3}
   FallingDeath: {fileID: 8300000, guid: d15ed014293993e42b59d22f8a3b25d4, type: 3}
+  Bouncing: {fileID: 8300000, guid: c712df650ac034a41856037c7173768f, type: 3}
 --- !u!81 &8337798564092996869
 AudioListener:
   m_ObjectHideFlags: 0
