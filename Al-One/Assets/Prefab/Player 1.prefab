@@ -9873,6 +9873,7 @@ GameObject:
   - component: {fileID: 5741182395468238843}
   - component: {fileID: 2700335556219347516}
   - component: {fileID: 2107606105}
+  - component: {fileID: 341783230006038985}
   m_Layer: 8
   m_Name: Sound Generator
   m_TagString: Untagged
@@ -9908,6 +9909,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ThemeAudioSource: {fileID: 1252448453875002260}
   SFXAudioSource: {fileID: 139456875539677584}
+  WalkingAudioSource: {fileID: 341783230006038985}
   JumpingAudioSource: {fileID: 2700335556219347516}
   JetpackAudioSource: {fileID: 2107606105}
   CrystalCollectAudioSource: {fileID: 5741182395468238843}
@@ -9916,6 +9918,8 @@ MonoBehaviour:
   TreePlanetTheme: {fileID: 8300000, guid: 2a396fd0b6cd7fc47b6865781cda9adb, type: 3}
   WaterPlanetTheme: {fileID: 8300000, guid: 645cd788166c61f4297cec44bf706710, type: 3}
   HomePlanetTheme: {fileID: 8300000, guid: 9d7080ae3468160428f77eddb285c9b5, type: 3}
+  LeafFall: {fileID: 8300000, guid: b9fadb160455cd74cab345cfa1f949f1, type: 3}
+  RockFall: {fileID: 8300000, guid: 5b5285d05de405e4c8aac2e9b0fe4c98, type: 3}
   SpikeDeath: {fileID: 8300000, guid: c01748674a3a36543ba9b2ca8c8193d9, type: 3}
   LavaDeath: {fileID: 8300000, guid: 3cf939eb5779eb947b824b90a036679c, type: 3}
   FallingDeath: {fileID: 8300000, guid: d15ed014293993e42b59d22f8a3b25d4, type: 3}
@@ -10332,6 +10336,102 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 0
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!82 &341783230006038985
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4291258924332342971}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 2679911335629721647, guid: f6373c25fb057df4f97b7d6c7187e019, type: 2}
+  m_audioClip: {fileID: 8300000, guid: 4164bce7ffd552143a1e7ea0d40823b0, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
   Pan2D: 0

@@ -48,6 +48,9 @@ public class PlayerControls : MonoBehaviour
     private GameObject myCineMachineCamera;
     private CinemachineStateDrivenCamera CinemachineStateDrivenCamera;
 
+    //Optimization
+    private bool isGrounded = false;
+
     //Easter Egg
     private int keyIndex;
     private KeyCode[] konamicode = new KeyCode[] {KeyCode.UpArrow, KeyCode.UpArrow, KeyCode.DownArrow, KeyCode.DownArrow,
@@ -67,6 +70,8 @@ public class PlayerControls : MonoBehaviour
 
     void Update()
     {
+        isGrounded = IsGrounded();
+
         if (PlayerHasControl)
         {
             Run();
@@ -153,7 +158,7 @@ public class PlayerControls : MonoBehaviour
             JetpackParticles.Stop();
         }
 
-        if (IsGrounded())
+        if (isGrounded)
         {
             JetpackFuel = 1f;
             HUDController.JetpackFuelDisplay.fillAmount = JetpackFuel;
@@ -162,15 +167,23 @@ public class PlayerControls : MonoBehaviour
 
     private void Run()
     {
-            float moveHorizontal = Input.GetAxis("Horizontal");
-            Vector2 playerVelocity = new Vector2(moveHorizontal * m_speed, myRigidBody.velocity.y);
-            myRigidBody.velocity = playerVelocity;
-        
+        float moveHorizontal = Input.GetAxis("Horizontal");
+        Vector2 playerVelocity = new Vector2(moveHorizontal * m_speed, myRigidBody.velocity.y);
+        myRigidBody.velocity = playerVelocity;
+
+        if (moveHorizontal != 0 && isGrounded)
+        {
+            SoundPlayer.StartWalkingSFX();
+        }
+        else
+        {
+            SoundPlayer.StopWalkingSFX();
+        }
     }
 
     private void Jump()
     {
-        if (IsGrounded() && Input.GetButtonDown("Jump"))
+        if (isGrounded && Input.GetButtonDown("Jump"))
         {
             SoundPlayer.PlayJumpingSFX();
             Vector2 jumpVelocityToAdd = new Vector2(0f, jumpSpeed);
@@ -226,7 +239,7 @@ public class PlayerControls : MonoBehaviour
     {
         float moveVertical = Input.GetAxis("Vertical");
 
-        if (!myCollider.IsTouchingLayers(LayerMask.GetMask("Ladder")) || (IsGrounded() && moveVertical == 0f))
+        if (!myCollider.IsTouchingLayers(LayerMask.GetMask("Ladder")) || (isGrounded && moveVertical == 0f))
         {
             myAnimator.SetBool("Climbing", false);
             myAnimator.SetBool("Climbing_Idle", false);

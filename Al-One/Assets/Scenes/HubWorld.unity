@@ -503,6 +503,18 @@ PrefabInstance:
       propertyPath: m_Direction
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 680026342783782859, guid: dee6fd11f9943eb459f0986b02dee538, type: 3}
+      propertyPath: CharacterAudioSource
+      value: 
+      objectReference: {fileID: 1518238658}
+    - target: {fileID: 680026342783782859, guid: dee6fd11f9943eb459f0986b02dee538, type: 3}
+      propertyPath: Jumping
+      value: 
+      objectReference: {fileID: 8300000, guid: 99e5c5dababf07742bddf261f7163373, type: 3}
+    - target: {fileID: 680026342783782859, guid: dee6fd11f9943eb459f0986b02dee538, type: 3}
+      propertyPath: Walking
+      value: 
+      objectReference: {fileID: 8300000, guid: 4164bce7ffd552143a1e7ea0d40823b0, type: 3}
     - target: {fileID: 1714531405034186063, guid: dee6fd11f9943eb459f0986b02dee538, type: 3}
       propertyPath: m_Name
       value: Player
@@ -8558,6 +8570,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Menu: {fileID: 442859942}
   IsMainMenu: 0
+--- !u!82 &1518238658 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2700335556219347516, guid: dee6fd11f9943eb459f0986b02dee538, type: 3}
+  m_PrefabInstance: {fileID: 147353326}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1533679179
 GameObject:
   m_ObjectHideFlags: 0

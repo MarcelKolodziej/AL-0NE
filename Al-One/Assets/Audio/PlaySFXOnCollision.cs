@@ -10,6 +10,8 @@ public class PlaySFXOnCollision : MonoBehaviour
         Spike_Death,
         Lava_Death,
         Falling_Death,
+        RockFall,
+        LeafFall,
     }
 
     [SerializeField] private SFX SFXToPlay;
@@ -35,6 +37,12 @@ public class PlaySFXOnCollision : MonoBehaviour
                 break;
             case SFX.Falling_Death:
                 soundPlayer.PlayFallingDeathSFX();
+                break;
+            case SFX.RockFall:
+                soundPlayer.PlayRockFallSFX();
+                break;
+            case SFX.LeafFall:
+                soundPlayer.PlayLeafFallSFX();
                 break;
         }
     }

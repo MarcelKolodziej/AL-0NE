@@ -9,6 +9,7 @@ public class SoundPlayer : MonoBehaviour
     [SerializeField] private AudioSource ThemeAudioSource;
     [SerializeField] private AudioSource SFXAudioSource;
     [Space]
+    [SerializeField] private AudioSource WalkingAudioSource;
     [SerializeField] private AudioSource JumpingAudioSource;
     [SerializeField] private AudioSource JetpackAudioSource;
     [SerializeField] private AudioSource CrystalCollectAudioSource;
@@ -21,6 +22,8 @@ public class SoundPlayer : MonoBehaviour
     [SerializeField] private AudioClip HomePlanetTheme;
 
     [Header("SFX Clips")]
+    [SerializeField] private AudioClip LeafFall;
+    [SerializeField] private AudioClip RockFall;
     [SerializeField] private AudioClip SpikeDeath;
     [SerializeField] private AudioClip LavaDeath;
     [SerializeField] private AudioClip FallingDeath;
@@ -42,22 +45,27 @@ public class SoundPlayer : MonoBehaviour
         switch (currentScene)
         {
             case SceneData.Scene.HubPlanet:
+                ThemeAudioSource.volume = 1f;
                 ThemeAudioSource.clip = HubPlanetTheme;
                 ThemeAudioSource.Play();
                 break;
             case SceneData.Scene.LavaPlanet:
+                ThemeAudioSource.volume = 0.8f;
                 ThemeAudioSource.clip = LavaPlanetTheme;
                 ThemeAudioSource.Play();
                 break;
             case SceneData.Scene.TreePlanet:
+                ThemeAudioSource.volume = 1f;
                 ThemeAudioSource.clip = TreePlanetTheme;
                 ThemeAudioSource.Play();
                 break;
             case SceneData.Scene.WaterPlanet:
+                ThemeAudioSource.volume = 1f;
                 ThemeAudioSource.clip = WaterPlanetTheme;
                 ThemeAudioSource.Play();
                 break;
             case SceneData.Scene.HomePlanet:
+                ThemeAudioSource.volume = 1f;
                 ThemeAudioSource.clip = HomePlanetTheme;
                 ThemeAudioSource.Play();
                 break;
@@ -93,6 +101,33 @@ public class SoundPlayer : MonoBehaviour
     public void PlayJumpingSFX()
     {
         JumpingAudioSource.Play();
+    }
+
+    public void StartWalkingSFX()
+    {
+        if (!WalkingAudioSource.isPlaying)
+        {
+            WalkingAudioSource.Play();
+        }
+    }
+
+    public void StopWalkingSFX()
+    {
+        WalkingAudioSource.Stop();
+    }
+
+    public void PlayRockFallSFX()
+    {
+        SFXAudioSource.volume = 1f;
+        SFXAudioSource.clip = RockFall;
+        SFXAudioSource.Play();
+    }
+
+    public void PlayLeafFallSFX()
+    {
+        SFXAudioSource.volume = 1f;
+        SFXAudioSource.clip = LeafFall;
+        SFXAudioSource.Play();
     }
 
     public void PlayBounceSFX()
