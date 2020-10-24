@@ -158,7 +158,7 @@ public class SoundPlayer : MonoBehaviour
     {
         if (!SFXAudioSource.isPlaying)
         {
-            SFXAudioSource.volume = 1f;
+            SFXAudioSource.volume = 0.5f;
             SFXAudioSource.clip = FallingDeath;
             SFXAudioSource.Play();
         }
