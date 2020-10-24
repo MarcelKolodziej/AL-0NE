@@ -20,6 +20,9 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] private float ForceModifier = 1f;
     private IEnumerator coroutine;
 
+    //Sound
+    [SerializeField] private SoundPlayer SoundPlayer;
+
     //UI
     [SerializeField] private HUDController HUDController;
 

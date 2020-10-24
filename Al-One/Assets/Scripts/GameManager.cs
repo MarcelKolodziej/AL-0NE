@@ -10,6 +10,7 @@ using Cinemachine;
 public class GameManager : Singleton<GameManager>
 {
     private PlayerControls playerControls;
+    private SoundPlayer soundPlayer;
     private Transform spawnPoint;
     public bool MainMenuClosed = false;
 
@@ -36,6 +37,7 @@ public class GameManager : Singleton<GameManager>
 
         gameObject = GameObject.FindGameObjectWithTag("Player");
         playerControls = gameObject.GetComponent<PlayerControls>();
+        soundPlayer = gameObject.GetComponentInChildren<SoundPlayer>();
 
         // Setup Game Scene
         RespawnPlayer();
@@ -72,5 +74,10 @@ public class GameManager : Singleton<GameManager>
     public Vector3 GetPlayerPosition()
     {
         return playerControls.transform.position;
+    }
+
+    public SoundPlayer GetSoundPlayer()
+    {
+        return soundPlayer;
     }
 }

@@ -5,14 +5,25 @@ using UnityEngine.SceneManagement;
 
 public class SoundPlayer : MonoBehaviour
 {
-    [Header("Themes")]
-    [SerializeField] private AudioSource HubPlanetTheme;
-    [SerializeField] private AudioSource LavaPlanetTheme;
-    [SerializeField] private AudioSource TreePlanetTheme;
-    [SerializeField] private AudioSource WaterPlanetTheme;
-    [SerializeField] private AudioSource HomePlanetTheme;
-    [Header("SFX")]
-    [SerializeField] private AudioSource CrystalCollectedSFX;
+    [Header("Audio Sources")]
+    [SerializeField] private AudioSource ThemeAudioSource;
+    [SerializeField] private AudioSource SFXAudioSource;
+    [Space]
+    [SerializeField] private AudioSource JumpingAudioSource;
+    [SerializeField] private AudioSource JetpackAudioSource;
+    [SerializeField] private AudioSource CrystalCollectAudioSource;
+
+[Header("Theme Clips")]
+    [SerializeField] private AudioClip HubPlanetTheme;
+    [SerializeField] private AudioClip LavaPlanetTheme;
+    [SerializeField] private AudioClip TreePlanetTheme;
+    [SerializeField] private AudioClip WaterPlanetTheme;
+    [SerializeField] private AudioClip HomePlanetTheme;
+
+    [Header("Death SFX Clips")]
+    [SerializeField] private AudioClip SpikeDeath;
+    [SerializeField] private AudioClip LavaDeath;
+    [SerializeField] private AudioClip FallingDeath;
 
     private void Awake()
     {
@@ -30,21 +41,73 @@ public class SoundPlayer : MonoBehaviour
         switch (currentScene)
         {
             case SceneData.Scene.HubPlanet:
-                HubPlanetTheme.Play();
+                ThemeAudioSource.clip = HubPlanetTheme;
+                ThemeAudioSource.Play();
                 break;
             case SceneData.Scene.LavaPlanet:
-                LavaPlanetTheme.Play();
+                ThemeAudioSource.clip = LavaPlanetTheme;
+                ThemeAudioSource.Play();
                 break;
             case SceneData.Scene.TreePlanet:
-                TreePlanetTheme.Play();
+                ThemeAudioSource.clip = TreePlanetTheme;
+                ThemeAudioSource.Play();
                 break;
             case SceneData.Scene.WaterPlanet:
-                WaterPlanetTheme.Play();
+                ThemeAudioSource.clip = WaterPlanetTheme;
+                ThemeAudioSource.Play();
                 break;
             case SceneData.Scene.HomePlanet:
-                HomePlanetTheme.Play();
+                ThemeAudioSource.clip = HomePlanetTheme;
+                ThemeAudioSource.Play();
                 break;
         }
 
+    }
+
+    public void PlayJetpackSound()
+    {
+        JetpackAudioSource.Play();
+    }
+
+    public void StopJetpackSound()
+    {
+        JetpackAudioSource.Stop();
+    }
+
+    public void PlayCrystalPickedUpSFX()
+    {
+        CrystalCollectAudioSource.Play();
+    }
+
+    public void PlayJumpingSFX()
+    {
+        JumpingAudioSource.Play();
+    }
+
+    public void PlaySpikeDeathSFX()
+    {
+        SFXAudioSource.volume = 0.8f;
+        SFXAudioSource.clip = SpikeDeath;
+        SFXAudioSource.Play();
+    }
+
+    public void PlayLavaDeathSFX()
+    {
+        if (!SFXAudioSource.isPlaying)
+        {
+            SFXAudioSource.volume = 1f;
+            SFXAudioSource.clip = LavaDeath;
+            SFXAudioSource.Play();
+        }
+    }
+
+    public void PlayFallingDeathSFX()
+    {
+        if (!SFXAudioSource.isPlaying)
+        {
+            SFXAudioSource.volume = 1f;
+            SFXAudioSource.clip = FallingDeath;
+            SFXAudioSource.Play();
+        }
     }
 }

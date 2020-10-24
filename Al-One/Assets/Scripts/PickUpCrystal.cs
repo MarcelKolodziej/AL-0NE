@@ -28,6 +28,7 @@ public class PickUpCrystal : MonoBehaviour
                 break;
         }
 
+        GameManager.Instance.GetSoundPlayer().PlayCrystalPickedUpSFX();
         CrystalDisplay.UpdateCrystalDisplay();
         gameObject.SetActive(false);
     }
