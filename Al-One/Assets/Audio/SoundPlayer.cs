@@ -65,11 +65,18 @@ public class SoundPlayer : MonoBehaviour
 
     }
 
-    public void PlayJetpackSound()
+    public void PlayJetpackSound(bool oneShot = false)
     {
         if (!JetpackAudioSource.isPlaying)
         {
-            JetpackAudioSource.Play();
+            if (oneShot)
+            {
+                JetpackAudioSource.PlayOneShot(JetpackAudioSource.clip); // this is stupid, i'm suprised it works
+            }
+            else
+            {
+                JetpackAudioSource.Play();
+            }
         }
     }
 

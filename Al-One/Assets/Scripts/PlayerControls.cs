@@ -74,9 +74,20 @@ public class PlayerControls : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (PlayerHasControl && JetPackEnabled)
+        if (JetPackEnabled)
         {
-            JetPackFly();
+            if (PlayerHasControl)
+            {
+                JetPackFly();
+            }
+            else
+            {
+                JetpackParticles.Play();
+                SoundPlayer.PlayJetpackSound(true);
+                myRigidBody.AddForce(new Vector2(0, jetPackForce));
+                JetpackFuel -= FuelDecaySpeed;
+                HUDController.JetpackFuelDisplay.fillAmount = JetpackFuel;
+            }
         }
     }
 
