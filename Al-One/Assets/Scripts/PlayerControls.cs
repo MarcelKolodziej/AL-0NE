@@ -1,4 +1,5 @@
-﻿using JetBrains.Annotations;
+﻿using Cinemachine;
+using JetBrains.Annotations;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -13,36 +14,111 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] float jumpSpeed = 10f;
     [SerializeField] float m_verticalSpeed = 10f;
     float gravityScaleAtStart;
-    // State 
-    //bool isAlive = true
+
+    // Death
+    private bool PlayerHasControl = true;
+    [SerializeField] private float ForceModifier = 1f;
+    private IEnumerator coroutine;
+
+    //UI
+    [SerializeField] private HUDController HUDController;
+
+    //Jet-Pack
+    [SerializeField] private ParticleSystem JetpackParticles;
+    private ParticleSystem.ShapeModule JetpackParticleShape;
+    [Space]
+    [SerializeField] private bool JetPackEnabled = false;
+    [SerializeField] private float jetPackForce = 3f;
+    [SerializeField] private float JetpackFuel = 1f;
+    [SerializeField] private float FuelDecaySpeed = 0.0f;
+    [Space]
+    [SerializeField] private Vector3 ParticleLeftVector;
+    [SerializeField] private Vector3 ParticleDownVector;
+    [SerializeField] private Vector3 ParticleRightVector;
+    private bool isFlying = false;
 
     // Cached component references
     Rigidbody2D myRigidBody;
     Animator myAnimator;
-    BoxCollider2D myCollider;
+    CapsuleCollider2D myCollider;
+    [SerializeField] private ParticleSystem BloodParticles;
     [SerializeField] private LayerMask platformLayerMask;
+    private GameObject myCineMachineCamera;
+    private CinemachineStateDrivenCamera CinemachineStateDrivenCamera;
+
     // Message then methods
     void Start()
     {
         myRigidBody = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
-        myCollider = GetComponent<BoxCollider2D>();
+        myCollider = GetComponent<CapsuleCollider2D>();
+        myCineMachineCamera = GameObject.FindGameObjectWithTag("CMVirtualCam");
+        CinemachineStateDrivenCamera = myCineMachineCamera.GetComponent<CinemachineStateDrivenCamera>();
         gravityScaleAtStart = myRigidBody.gravityScale;
-
+        JetpackParticleShape = JetpackParticles.shape;
     }
 
     void Update()
     {
-        Run();
-        ClimbLadder();
-        Jump();
-        Flip();
+        if (PlayerHasControl)
+        {
+            Run();
+            ClimbLadder();
+            Jump();
+            Flip();
+        }
     }
+
+    void FixedUpdate()
+    {
+        if (PlayerHasControl && JetPackEnabled)
+        {
+            JetPackFly();
+        }
+    }
+
+    private void JetPackFly()
+    {
+        if (Input.GetKey(KeyCode.F) && JetpackFuel > 0)
+        {
+            JetpackParticles.Play();
+            float moveHorizontal = Input.GetAxis("Horizontal");
+
+            if (moveHorizontal < 0)
+            {
+                JetpackParticleShape.rotation = ParticleRightVector;
+            }
+            else if (moveHorizontal > 0) 
+            {
+                JetpackParticleShape.rotation = ParticleLeftVector;
+            }
+            else
+            {
+                JetpackParticleShape.rotation = ParticleDownVector;
+            }
+
+            myRigidBody.AddForce(new Vector2(0, jetPackForce));
+            JetpackFuel -= FuelDecaySpeed;
+            HUDController.JetpackFuelDisplay.fillAmount = JetpackFuel;
+        }
+        else
+        {
+            JetpackParticles.Stop();
+        }
+
+        if (IsGrounded())
+        {
+            JetpackFuel = 1f;
+            HUDController.JetpackFuelDisplay.fillAmount = JetpackFuel;
+        }
+    }
+
     private void Run()
     {
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        Vector2 playerVelocity = new Vector2(moveHorizontal * m_speed, myRigidBody.velocity.y);
-        myRigidBody.velocity = playerVelocity;
+            float moveHorizontal = Input.GetAxis("Horizontal");
+            Vector2 playerVelocity = new Vector2(moveHorizontal * m_speed, myRigidBody.velocity.y);
+            myRigidBody.velocity = playerVelocity;
+        
     }
 
     private void Jump()
@@ -135,6 +211,35 @@ public class PlayerControls : MonoBehaviour
         {
             this.transform.parent = col.transform;
         }
+
+        if (col.gameObject.tag == "DamageBlock" && coroutine == null)
+        {
+            PlayerHasControl = false;
+            myRigidBody.freezeRotation = false;
+            myAnimator.SetBool("Dead", true);
+            BloodParticles.Play();
+            myRigidBody.AddForceAtPosition(GenerateRandomForce(), col.gameObject.transform.position, ForceMode2D.Impulse);
+            coroutine = PlayerDeathSequence();
+            StartCoroutine(coroutine);
+        }
+
+        if (coroutine != null)
+        {
+            myRigidBody.AddForceAtPosition(GenerateRandomForce(), col.gameObject.transform.position, ForceMode2D.Impulse);
+            BloodParticles.Play();
+        }
+    }
+
+    public void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.tag == "DamageBlock" && coroutine == null)
+        {
+            PlayerHasControl = false;
+            myRigidBody.freezeRotation = false;
+            myAnimator.SetBool("Dead", true);
+            coroutine = PlayerDeathSequence();
+            StartCoroutine(coroutine);
+        }
     }
 
     void OnCollisionExit2D(Collision2D col)
@@ -143,5 +248,30 @@ public class PlayerControls : MonoBehaviour
         {
             this.transform.parent = null;
         }
+    }
+
+    private IEnumerator PlayerDeathSequence()
+    {
+        yield return new WaitForSeconds(1f);
+        myAnimator.SetBool("Dead", false);
+        PlayerHasControl = true;
+        transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+        myRigidBody.freezeRotation = true;
+        myRigidBody.velocity = Vector2.zero;
+        BloodParticles.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+        JetpackParticles.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+
+        Vector3 oldPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+        GameManager.Instance.TriggerPlayerDeath();
+        CinemachineStateDrivenCamera.PreviousStateIsValid = false;
+        CinemachineStateDrivenCamera.OnTargetObjectWarped(transform, transform.position - oldPosition);
+        JetpackFuel = 1f;
+        HUDController.JetpackFuelDisplay.fillAmount = JetpackFuel;
+        coroutine = null;
+    }
+
+    private Vector2 GenerateRandomForce()
+    {
+        return new Vector2(UnityEngine.Random.Range(-ForceModifier, ForceModifier), UnityEngine.Random.Range(-ForceModifier, ForceModifier));
     }
 }

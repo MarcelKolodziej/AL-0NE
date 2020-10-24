@@ -6,13 +6,14 @@ public class ActivateRisingWater : MonoBehaviour
 {
     [Header("Objects To Assign")]
     [SerializeField] private RisingWater RisingWater;
-    private bool pressed = false;
+    [SerializeField] private PlatformMover Door;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (!pressed && other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player")
         {
             RisingWater.ActivateRisingWater();
+            Door.ResetToDefaultPosition(true);
         }
     }
 }

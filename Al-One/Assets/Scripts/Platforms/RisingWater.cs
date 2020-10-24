@@ -7,6 +7,9 @@ public class RisingWater : MonoBehaviour
     [Header("Objects To Assign")]
     [SerializeField] private Transform StartingPoint;
     [SerializeField] private Transform EndingPoint;
+    [Space]
+    [SerializeField] private PlatformMover PlatformMover;
+    [SerializeField] private PlatformSequencer PlatformSequencer;
 
     [Header("Public Fields")]
     [SerializeField] private float RisingSpeed = 1f;
@@ -17,15 +20,20 @@ public class RisingWater : MonoBehaviour
 
     public void ActivateRisingWater()
     {
-        IsActive = true;
-        startTime = Time.time;
-        journeyLenght = Vector3.Distance(StartingPoint.position, EndingPoint.position);
+        if (!IsActive)
+        {
+            IsActive = true;
+            startTime = Time.time;
+            journeyLenght = Vector3.Distance(StartingPoint.position, EndingPoint.position);
+        }
     }
 
     public void ResetRisingWater()
     {
-        transform.position = StartingPoint.position;
         IsActive = false;
+        PlatformMover.ResetToDefaultPosition(true);
+        PlatformSequencer.ForceStop(true);
+        transform.position = StartingPoint.position;
     }
     
     private void Update()
@@ -45,14 +53,6 @@ public class RisingWater : MonoBehaviour
                 transform.position = EndingPoint.position;
                 IsActive = false;
             }
-        }
-    }
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.tag == "Player")
-        {
-            GameManager.Instance.DamangePlayer();
-            ResetRisingWater();
         }
     }
 }

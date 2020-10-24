@@ -46,14 +46,18 @@ public class PlatformSequencer : MonoBehaviour
     /// <summary>
     /// Forces stops the coroutine and all referenced platforms.
     /// </summary>
-    public void ForceStop()
+    public void ForceStop(bool turnOff = false)
     {
-        StopCoroutine(coroutine);
+        if (coroutine != null)
+        {
+            StopCoroutine(coroutine);
+        } 
         coroutine = null;
 
         foreach (PlatformMover platform in PlatformMovers)
         {
             platform.IsActive = false;
+            platform.ResetToDefaultPosition(turnOff);
         }
     }
 
