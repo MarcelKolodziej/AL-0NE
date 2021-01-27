@@ -16,7 +16,7 @@ public class PlayerControls : MonoBehaviour
     float gravityScaleAtStart;
 
     // Death
-    private bool PlayerHasControl = true;
+    public bool PlayerHasControl = true;
     private bool FallingDeath = false;
     [SerializeField] private float ForceModifier = 1f;
     private IEnumerator coroutine;

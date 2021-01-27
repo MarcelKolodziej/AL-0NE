@@ -12,7 +12,10 @@ public class SetSpawnPoint : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            GameManager.Instance.SetSpawnPoint(gameObject);
+            if (other.gameObject.GetComponent<PlayerControls>().PlayerHasControl)
+            {
+                GameManager.Instance.SetSpawnPoint(gameObject);
+            }
         }
     }
 }

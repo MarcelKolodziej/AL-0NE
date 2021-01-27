@@ -13,9 +13,12 @@ public class InteractableButton : MonoBehaviour
     {
         if (!pressed && collider.gameObject.tag == "Player")
         {
-            Door.PlayOneShot();
-            ButtonAnimator.SetBool("SwitchFlipped", true);
-            pressed = true;
+            if (collider.gameObject.GetComponent<PlayerControls>().PlayerHasControl)
+            {
+                Door.PlayOneShot();
+                ButtonAnimator.SetBool("SwitchFlipped", true);
+                pressed = true;
+            }
         }
     }
 }
