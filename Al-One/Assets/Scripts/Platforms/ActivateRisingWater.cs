@@ -12,6 +12,7 @@ public class ActivateRisingWater : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
+            GameManager.Instance.GetSoundPlayer().PlayHeavyDoorCloseSFX();
             RisingWater.ActivateRisingWater();
             Door.ResetToDefaultPosition(true);
         }

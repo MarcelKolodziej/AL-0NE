@@ -59,6 +59,9 @@ public class PlayerControls : MonoBehaviour
     private KeyCode[] konamicode = new KeyCode[] {KeyCode.UpArrow, KeyCode.UpArrow, KeyCode.DownArrow, KeyCode.DownArrow,
     KeyCode.LeftArrow, KeyCode.RightArrow, KeyCode.LeftArrow, KeyCode.RightArrow, KeyCode.B, KeyCode.A};
 
+    // Lava Level Specific Fix
+    [SerializeField] private ResetRisingWater resetRisingLava;
+
     // Message then methods
     void Start()
     {
@@ -354,6 +357,14 @@ public class PlayerControls : MonoBehaviour
         }
     }
 
+    public void ResetAnimator()
+    {
+        myAnimator.SetBool("Running", false);
+        myAnimator.SetBool("Climbing", false);
+        myAnimator.SetBool("Climbing_Idle", false);
+        myAnimator.SetBool("Dead", false);
+    }
+
     private IEnumerator PlayerDeathSequence()
     {
         yield return new WaitForSeconds(1.5f);
@@ -378,6 +389,12 @@ public class PlayerControls : MonoBehaviour
         CinemachineStateDrivenCamera.OnTargetObjectWarped(transform, transform.position - oldPosition);
         JetpackFuel = 1f;
         HUDController.JetpackFuelDisplay.fillAmount = JetpackFuel;
+
+        if (resetRisingLava != null)
+        {
+            resetRisingLava.TriggerResetAfterDeath();
+        }
+
         coroutine = null;
     }
 

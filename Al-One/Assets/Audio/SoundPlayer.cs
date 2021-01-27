@@ -24,6 +24,8 @@ public class SoundPlayer : MonoBehaviour
     [Header("SFX Clips")]
     [SerializeField] private AudioClip LeafFall;
     [SerializeField] private AudioClip RockFall;
+    [SerializeField] private AudioClip HeavyDoorOpen;
+    [SerializeField] private AudioClip HeavyDoorClose;
     [SerializeField] private AudioClip SpikeDeath;
     [SerializeField] private AudioClip LavaDeath;
     [SerializeField] private AudioClip FallingDeath;
@@ -128,6 +130,20 @@ public class SoundPlayer : MonoBehaviour
     {
         SFXAudioSource.volume = 1f;
         SFXAudioSource.clip = LeafFall;
+        SFXAudioSource.Play();
+    }
+
+    public void PlayHeavyDoorOpenSFX(float vol = 1f)
+    {
+        SFXAudioSource.volume = vol;
+        SFXAudioSource.clip = HeavyDoorOpen;
+        SFXAudioSource.Play();
+    }
+
+    public void PlayHeavyDoorCloseSFX()
+    {
+        SFXAudioSource.volume = 0.4f;
+        SFXAudioSource.clip = HeavyDoorClose;
         SFXAudioSource.Play();
     }
 
