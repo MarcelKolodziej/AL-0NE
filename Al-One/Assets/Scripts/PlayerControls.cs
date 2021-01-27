@@ -17,6 +17,7 @@ public class PlayerControls : MonoBehaviour
 
     // Death
     private bool PlayerHasControl = true;
+    private bool FallingDeath = false;
     [SerializeField] private float ForceModifier = 1f;
     private IEnumerator coroutine;
 
@@ -118,7 +119,7 @@ public class PlayerControls : MonoBehaviour
             {
                 JetPackFly();
             }
-            else
+            else if (JetpackFuel > 0 && FallingDeath == false)
             {
                 JetpackParticles.Play();
                 SoundPlayer.PlayJetpackSound(true);
@@ -170,16 +171,25 @@ public class PlayerControls : MonoBehaviour
     private void Run()
     {
         float moveHorizontal = Input.GetAxis("Horizontal");
-        Vector2 playerVelocity = new Vector2(moveHorizontal * m_speed, myRigidBody.velocity.y);
-        myRigidBody.velocity = playerVelocity;
 
-        if (moveHorizontal != 0 && isGrounded)
+        if (moveHorizontal == 0)
         {
-            SoundPlayer.StartWalkingSFX();
+            myRigidBody.velocity = new Vector2(0, myRigidBody.velocity.y);
+            SoundPlayer.StopWalkingSFX();
         }
         else
         {
-            SoundPlayer.StopWalkingSFX();
+            Vector2 playerVelocity = new Vector2(moveHorizontal * m_speed, myRigidBody.velocity.y);
+            myRigidBody.velocity = playerVelocity;
+
+            if (isGrounded)
+            {
+                SoundPlayer.StartWalkingSFX();
+            }
+            else
+            {
+                SoundPlayer.StopWalkingSFX();
+            }
         }
     }
 
@@ -198,6 +208,7 @@ public class PlayerControls : MonoBehaviour
         float extraHeightText = 0.5f;
         RaycastHit2D rayCastHit = Physics2D.BoxCast(myCollider.bounds.center, myCollider.bounds.size, 0f, Vector2.down, extraHeightText, platformLayerMask);
         Color rayColor;
+
         if (rayCastHit.collider != null)
         {
             rayColor = Color.green;
@@ -206,6 +217,7 @@ public class PlayerControls : MonoBehaviour
         {
             rayColor = Color.red;
         }
+
         Debug.DrawRay(myCollider.bounds.center + new Vector3(myCollider.bounds.extents.x, 0), Vector2.down * (myCollider.bounds.extents.y + extraHeightText), rayColor);
         Debug.DrawRay(myCollider.bounds.center - new Vector3(myCollider.bounds.extents.x, 0), Vector2.down * (myCollider.bounds.extents.y + extraHeightText), rayColor);
         Debug.DrawRay(myCollider.bounds.center - new Vector3(myCollider.bounds.extents.x, myCollider.bounds.extents.y + extraHeightText), Vector2.right * (myCollider.bounds.extents.x * 2f), rayColor);
@@ -277,6 +289,11 @@ public class PlayerControls : MonoBehaviour
 
         if (col.gameObject.tag == "DamageBlock" && coroutine == null)
         {
+            if (col.gameObject.name == "FallDeathTrigger")
+            {
+                FallingDeath = true;
+            }
+
             PlayerHasControl = false;
             myRigidBody.freezeRotation = false;
             myAnimator.SetBool("Dead", true);
@@ -297,6 +314,11 @@ public class PlayerControls : MonoBehaviour
     {
         if (col.gameObject.tag == "DamageBlock" && coroutine == null)
         {
+            if (col.gameObject.name == "FallDeathTrigger")
+            {
+                FallingDeath = true;
+            }
+
             PlayerHasControl = false;
             myRigidBody.freezeRotation = false;
             myAnimator.SetBool("Dead", true);
@@ -338,6 +360,7 @@ public class PlayerControls : MonoBehaviour
 
         // Clean Up and Reset Code
         myAnimator.SetBool("Dead", false);
+        FallingDeath = false;
         PlayerHasControl = true;
         transform.rotation = Quaternion.Euler(0f, 0f, 0f);
         myRigidBody.freezeRotation = true;
