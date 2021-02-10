@@ -13,6 +13,7 @@ public class GameManager : Singleton<GameManager>
     private SoundPlayer soundPlayer;
     private Transform spawnPoint;
     public bool MainMenuClosed = false;
+    public SceneData.Scene CurrentLevelName;
 
     // for crystals collected
     public bool BlueCrystalPickedUp = false;
@@ -30,6 +31,7 @@ public class GameManager : Singleton<GameManager>
 
     private void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
     {
+        CurrentLevelName = SceneData.GetEnumFromSceneString(scene.name);
         GameObject gameObject;
 
         // Populate references

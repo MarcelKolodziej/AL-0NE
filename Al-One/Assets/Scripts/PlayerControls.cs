@@ -131,6 +131,18 @@ public class PlayerControls : MonoBehaviour
                 HUDController.JetpackFuelDisplay.fillAmount = JetpackFuel;
             }
         }
+
+        if (Input.GetKey(KeyCode.Escape) && PlayerHasControl && 
+            GameManager.Instance.CurrentLevelName != SceneData.Scene.HomePlanet &&
+            GameManager.Instance.CurrentLevelName != SceneData.Scene.HubPlanet)
+        {
+            PlayerHasControl = false;
+            FallingDeath = true;
+            myRigidBody.freezeRotation = false;
+            myAnimator.SetBool("Dead", true);
+            coroutine = PlayerDeathSequence(0.1f);
+            StartCoroutine(coroutine);
+        }
     }
 
     private void JetPackFly()
@@ -365,9 +377,9 @@ public class PlayerControls : MonoBehaviour
         myAnimator.SetBool("Dead", false);
     }
 
-    private IEnumerator PlayerDeathSequence()
+    private IEnumerator PlayerDeathSequence(float deathAnimationDuration = 1.5f)
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(deathAnimationDuration);
 
         // Clean Up and Reset Code
         myAnimator.SetBool("Dead", false);
